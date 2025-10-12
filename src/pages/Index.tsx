@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import HudOverlay from "@/components/HudOverlay";
 import Navigation from "@/components/Navigation";
 import ContentCard from "@/components/ContentCard";
 import TrackList from "@/components/TrackList";
 import heroBg from "@/assets/hero-bg.jpg";
+import logo from "@/assets/aryiion-logo.png";
 import card1 from "@/assets/card-1.jpg";
 import card2 from "@/assets/card-2.jpg";
 import card3 from "@/assets/card-3.jpg";
@@ -45,17 +47,22 @@ const Index = () => {
 
         {/* Hero content */}
         <div className="relative z-10 text-center animate-fade-in">
-          <div className="mb-4 font-mono text-sm tracking-widest text-primary uppercase animate-pulse-glow">
+          <div className="mb-8 font-mono text-sm tracking-widest text-primary uppercase animate-pulse-glow">
             Explore
           </div>
-          <h1 className="font-display text-7xl md:text-9xl font-bold uppercase tracking-wider">
-            <span className="inline-block hover:animate-glitch cursor-default">
-              Aryiion
-            </span>
-          </h1>
+          
+          {/* Logo with interaction */}
+          <Link to="/explore" className="inline-block group">
+            <img 
+              src={logo} 
+              alt="Aryiion Logo" 
+              className="w-64 md:w-96 mx-auto transition-all duration-500 hover:scale-110 hover:drop-shadow-[0_0_30px_rgba(34,197,94,0.6)] cursor-pointer animate-fade-in filter brightness-110"
+            />
+          </Link>
+          
           <button 
             onClick={scrollToTracks}
-            className="mt-4 font-mono text-sm tracking-widest text-muted-foreground hover:text-primary uppercase transition-all duration-300 hover:scale-110 cursor-pointer group"
+            className="mt-8 font-mono text-sm tracking-widest text-muted-foreground hover:text-primary uppercase transition-all duration-300 hover:scale-110 cursor-pointer group block mx-auto"
           >
             <span className="block group-hover:text-primary transition-colors">Bluetopia World</span>
             <div className="w-0 h-0.5 bg-primary mx-auto mt-1 group-hover:w-full transition-all duration-300"></div>
