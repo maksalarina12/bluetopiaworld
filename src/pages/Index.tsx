@@ -11,9 +11,13 @@ const Index = () => {
 
   const journeyEras = [
     { id: 1, title: "BLUETOPIA ERA", description: "The beginning of a new chapter", year: "2025" },
-    { id: 2, title: "LOST MEMORY ERA", description: "Fragments of the past", year: "2023" },
-    { id: 3, title: "HEARTED ERA", description: "Emotions in digital form", year: "2021" },
-    { id: 4, title: "BLOOM ERA", description: "The inception of growth", year: "2019" },
+    { id: 2, title: "LKENANGAN YANG HILANG", description: "Fragments of the past", year: "2023" },
+    { id: 3, title: "KAU DAN BULAN", description: "Emotions in digital form", year: "2021" },
+    { id: 5, title: "LUPAKAN AKU", description: "The inception of growth", year: "2019" },
+    { id: 6, title: "LEPASKAN", description: "The inception of growth", year: "2019" },
+    { id: 7, title: "SEANDAINYA", description: "The inception of growth", year: "2019" },
+    { id: 8, title: "JATUH CINTA PADAMU", description: "The inception of growth", year: "2019" },
+    { id: 9, title: "DARI MIMPI", description: "The inception of growth", year: "2019" },
   ];
 
   const scrollToTracks = () => {
