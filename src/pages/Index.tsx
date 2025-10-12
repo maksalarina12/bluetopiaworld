@@ -2,23 +2,18 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import HudOverlay from "@/components/HudOverlay";
 import Navigation from "@/components/Navigation";
-import ContentCard from "@/components/ContentCard";
 import TrackList from "@/components/TrackList";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/aryiion-logo.png";
-import card1 from "@/assets/card-1.jpg";
-import card2 from "@/assets/card-2.jpg";
-import card3 from "@/assets/card-3.jpg";
-import card4 from "@/assets/card-4.jpg";
 
 const Index = () => {
   const [showTrackList, setShowTrackList] = useState(false);
 
-  const contentItems = [
-    { id: 1, title: "Genesis Protocol", image: card1 },
-    { id: 2, title: "Neon District", image: card2 },
-    { id: 3, title: "Cyber Dreams", image: card3 },
-    { id: 4, title: "Digital Warfare", image: card4 },
+  const journeyEras = [
+    { id: 1, title: "BLUETOPIA ERA", description: "The beginning of a new chapter", year: "2025" },
+    { id: 2, title: "LOST MEMORY ERA", description: "Fragments of the past", year: "2023" },
+    { id: 3, title: "HEARTED ERA", description: "Emotions in digital form", year: "2021" },
+    { id: 4, title: "BLOOM ERA", description: "The inception of growth", year: "2019" },
   ];
 
   const scrollToTracks = () => {
@@ -85,17 +80,52 @@ const Index = () => {
         </section>
       )}
 
-      {/* Content Grid */}
+      {/* Journey Section */}
       <section className="relative z-10 container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {contentItems.map((item, index) => (
-            <ContentCard
-              key={item.id}
-              title={item.title}
-              image={item.image}
-              delay={index * 150}
-            />
-          ))}
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-wider text-foreground mb-4">
+              THE JOURNEY
+            </h2>
+            <p className="font-mono text-sm tracking-widest text-primary uppercase">
+              A timeline of creation and evolution
+            </p>
+          </div>
+
+          {/* Timeline */}
+          <div className="relative">
+            {/* Central timeline line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary opacity-30"></div>
+            
+            {/* Timeline items */}
+            <div className="space-y-12">
+              {journeyEras.map((era, index) => (
+                <div
+                  key={era.id}
+                  className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                >
+                  {/* Timeline dot */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-primary rounded-full border-2 border-background z-10 animate-pulse-glow"></div>
+                  
+                  {/* Content card */}
+                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                    <div className="bg-card border border-border rounded-lg p-6 hover:border-primary transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)] group">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="font-mono text-sm text-primary font-bold">{era.year}</span>
+                        <div className="flex-1 h-px bg-primary opacity-30"></div>
+                      </div>
+                      <h3 className="font-display text-xl font-bold uppercase tracking-wider text-foreground group-hover:text-primary transition-colors duration-300 mb-2">
+                        {era.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm font-mono">
+                        {era.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
