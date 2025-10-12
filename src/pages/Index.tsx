@@ -1,6 +1,8 @@
+import { useState } from "react";
 import HudOverlay from "@/components/HudOverlay";
 import Navigation from "@/components/Navigation";
 import ContentCard from "@/components/ContentCard";
+import TrackList from "@/components/TrackList";
 import heroBg from "@/assets/hero-bg.jpg";
 import card1 from "@/assets/card-1.jpg";
 import card2 from "@/assets/card-2.jpg";
@@ -8,12 +10,21 @@ import card3 from "@/assets/card-3.jpg";
 import card4 from "@/assets/card-4.jpg";
 
 const Index = () => {
+  const [showTrackList, setShowTrackList] = useState(false);
+
   const contentItems = [
     { id: 1, title: "Genesis Protocol", image: card1 },
     { id: 2, title: "Neon District", image: card2 },
     { id: 3, title: "Cyber Dreams", image: card3 },
     { id: 4, title: "Digital Warfare", image: card4 },
   ];
+
+  const scrollToTracks = () => {
+    setShowTrackList(true);
+    setTimeout(() => {
+      document.getElementById('tracklist')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -42,9 +53,13 @@ const Index = () => {
               Aryiion
             </span>
           </h1>
-          <div className="mt-4 font-mono text-sm tracking-widest text-muted-foreground uppercase">
-            World
-          </div>
+          <button 
+            onClick={scrollToTracks}
+            className="mt-4 font-mono text-sm tracking-widest text-muted-foreground hover:text-primary uppercase transition-all duration-300 hover:scale-110 cursor-pointer group"
+          >
+            <span className="block group-hover:text-primary transition-colors">Bluetopia World</span>
+            <div className="w-0 h-0.5 bg-primary mx-auto mt-1 group-hover:w-full transition-all duration-300"></div>
+          </button>
         </div>
 
         {/* Scroll indicator */}
@@ -55,6 +70,13 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Track List Section */}
+      {showTrackList && (
+        <section id="tracklist" className="relative z-10 container mx-auto px-4 py-24">
+          <TrackList />
+        </section>
+      )}
 
       {/* Content Grid */}
       <section className="relative z-10 container mx-auto px-4 py-16">
