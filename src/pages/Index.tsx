@@ -1,12 +1,83 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import HudOverlay from "@/components/HudOverlay";
+import Navigation from "@/components/Navigation";
+import ContentCard from "@/components/ContentCard";
+import heroBg from "@/assets/hero-bg.jpg";
+import card1 from "@/assets/card-1.jpg";
+import card2 from "@/assets/card-2.jpg";
+import card3 from "@/assets/card-3.jpg";
+import card4 from "@/assets/card-4.jpg";
 
 const Index = () => {
+  const contentItems = [
+    { id: 1, title: "Genesis Protocol", image: card1 },
+    { id: 2, title: "Neon District", image: card2 },
+    { id: 3, title: "Cyber Dreams", image: card3 },
+    { id: 4, title: "Digital Warfare", image: card4 },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <HudOverlay />
+      
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ 
+            backgroundImage: `url(${heroBg})`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background"></div>
+        </div>
+
+        {/* Hero content */}
+        <div className="relative z-10 text-center animate-fade-in">
+          <div className="mb-4 font-mono text-sm tracking-widest text-primary uppercase animate-pulse-glow">
+            Explore
+          </div>
+          <h1 className="font-display text-7xl md:text-9xl font-bold uppercase tracking-wider">
+            <span className="inline-block hover:animate-glitch cursor-default">
+              Aryiion
+            </span>
+          </h1>
+          <div className="mt-4 font-mono text-sm tracking-widest text-muted-foreground uppercase">
+            World
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
+          <div className="flex flex-col items-center gap-2 animate-bounce">
+            <div className="w-px h-12 bg-primary opacity-50"></div>
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse-glow"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Grid */}
+      <section className="relative z-10 container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {contentItems.map((item, index) => (
+            <ContentCard
+              key={item.id}
+              title={item.title}
+              image={item.image}
+              delay={index * 150}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-border py-8">
+        <div className="container mx-auto px-4 text-center">
+          <div className="font-mono text-sm text-muted-foreground">
+            © 2025 ARYIION. ALL RIGHTS RESERVED.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
