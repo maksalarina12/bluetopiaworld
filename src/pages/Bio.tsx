@@ -2,10 +2,15 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import HudOverlay from "@/components/HudOverlay";
+import BlurText from "@/components/BlurText";
 
 const Bio = () => {
   const [activeSection, setActiveSection] = useState("story");
   const [hoveredTimeline, setHoveredTimeline] = useState<number | null>(null);
+
+  const handleAnimationComplete = () => {
+    console.log('Blur text animation completed!');
+  };
 
   const journeyEras = [
     { id: 1, title: "BLUETOPIA ERA", description: "The beginning of a new chapter", year: "2025", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
@@ -28,12 +33,25 @@ const Bio = () => {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16 animate-fade-in">
-            <div className="font-mono text-sm tracking-widest text-primary uppercase mb-4 animate-pulse-glow">
-              Artist Profile
+            <div className="flex justify-center">
+              <BlurText
+                text="Artist Profile"
+                delay={100}
+                animateBy="words"
+                direction="top"
+                className="font-mono text-sm tracking-widest text-primary uppercase mb-4 animate-pulse-glow"
+              />
             </div>
-            <h1 className="font-display text-6xl md:text-8xl font-bold uppercase tracking-wider mb-4">
-              Bio
-            </h1>
+            <div className="flex justify-center">
+              <BlurText
+                text="Bio"
+                delay={200}
+                animateBy="words"
+                direction="top"
+                onAnimationComplete={handleAnimationComplete}
+                className="font-display text-6xl md:text-8xl font-bold uppercase tracking-wider mb-4"
+              />
+            </div>
           </div>
 
           {/* Navigation Tabs */}
@@ -41,7 +59,7 @@ const Bio = () => {
             {[
               { id: "story", label: "Story" },
               { id: "timeline", label: "Timeline" }
-            ].map((tab) => (
+            ].map((tab, index) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveSection(tab.id)}
@@ -51,7 +69,13 @@ const Bio = () => {
                     : 'border-border text-muted-foreground hover:border-primary hover:text-primary'
                 }`}
               >
-                {tab.label}
+                <BlurText
+                  text={tab.label}
+                  delay={100 + (index * 100)}
+                  animateBy="words"
+                  direction="top"
+                  className="inline"
+                />
               </button>
             ))}
           </div>
@@ -63,39 +87,60 @@ const Bio = () => {
                 <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full flex items-center justify-center mx-auto mb-8">
                   <span className="text-6xl">🎭</span>
                 </div>
-                <h2 className="font-display text-4xl font-bold uppercase tracking-wider mb-6">
-                  The Artist Behind the Music
-                </h2>
-                <p className="font-mono text-lg text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-                Aryiion is an emerging artist from Indonesia, born in 2005, blending the soulful touch of R&B, the raw flow of Modern Rap, and the emotional depth of Slow Rock.
-                His sound moves between smooth melodies and heartfelt lyricism, creating music that speaks to love, struggle, and self-reflection. From his beginnings on Aryiion.
-                Aryiion has built a loyal following through his honest storytelling and authentic vibe. With his unique voice and cinematic production style, he delivers tracks
-                that feel both intimate and timeless. Now, Aryiion is gearing up for his upcoming album, dropping on October 26, 2025 a project that showcases his growth, emotion,
-                and artistic evolution. This relese marks a new chapter for Aryiion as he continues shaping his sound and making his mark on the next wave of Indonesian music.
-                </p>
+                <div className="flex justify-center">
+                  <BlurText
+                    text="The Artist Behind the Music"
+                    delay={150}
+                    animateBy="words"
+                    direction="top"
+                    onAnimationComplete={handleAnimationComplete}
+                    className="font-display text-4xl font-bold uppercase tracking-wider mb-6"
+                  />
+                </div>
+                <BlurText
+                  text="Aryiion is an emerging artist from Indonesia, born in 2005, blending the soulful touch of R&B, the raw flow of Modern Rap, and the emotional depth of Slow Rock. His sound moves between smooth melodies and heartfelt lyricism, creating music that speaks to love, struggle, and self-reflection. From his beginnings on Aryiion. Aryiion has built a loyal following through his honest storytelling and authentic vibe. With his unique voice and cinematic production style, he delivers tracks that feel both intimate and timeless. Now, Aryiion is gearing up for his upcoming album, dropping on October 26, 2025 a project that showcases his growth, emotion, and artistic evolution. This relese marks a new chapter for Aryiion as he continues shaping his sound and making his mark on the next wave of Indonesian music."
+                  delay={200}
+                  animateBy="words"
+                  direction="top"
+                  className="font-mono text-lg text-muted-foreground leading-relaxed max-w-4xl mx-auto"
+                />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="bg-card border border-border rounded-2xl p-8 group hover:border-primary transition-all duration-300">
-                  <h3 className="font-display text-2xl font-bold uppercase tracking-wider mb-4 group-hover:text-primary transition-colors">
-                    Creative Philosophy
-                  </h3>
-                  <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    "Music is the bridge between the digital and the organic. Every sound tells a story, 
-                    every rhythm carries emotion, and every composition is a journey through the depths 
-                    of human experience."
-                  </p>
+                <BlurText
+                  text="Creative Philosophy"
+                  delay={100}
+                  animateBy="words"
+                  direction="top"
+                  onAnimationComplete={handleAnimationComplete}
+                  className="font-display text-2xl font-bold uppercase tracking-wider mb-4 group-hover:text-primary transition-colors"
+                />
+                  <BlurText
+                    text="Music is the bridge between the digital and the organic. Every sound tells a story, every rhythm carries emotion, and every composition is a journey through the depths of human experience."
+                    delay={150}
+                    animateBy="words"
+                    direction="top"
+                    className="font-mono text-sm text-muted-foreground leading-relaxed"
+                  />
                 </div>
 
                 <div className="bg-card border border-border rounded-2xl p-8 group hover:border-primary transition-all duration-300">
-                  <h3 className="font-display text-2xl font-bold uppercase tracking-wider mb-4 group-hover:text-primary transition-colors">
-                    Visual Identity
-                  </h3>
-                  <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    "The visual element is as important as the audio. Each track is accompanied by 
-                    carefully crafted visuals that enhance the emotional impact and create a complete 
-                    sensory experience."
-                  </p>
+                <BlurText
+                  text="Visual Identity"
+                  delay={200}
+                  animateBy="words"
+                  direction="top"
+                  onAnimationComplete={handleAnimationComplete}
+                  className="font-display text-2xl font-bold uppercase tracking-wider mb-4 group-hover:text-primary transition-colors"
+                />
+                  <BlurText
+                    text="The visual element is as important as the audio. Each track is accompanied by carefully crafted visuals that enhance the emotional impact and create a complete sensory experience."
+                    delay={250}
+                    animateBy="words"
+                    direction="top"
+                    className="font-mono text-sm text-muted-foreground leading-relaxed"
+                  />
                 </div>
               </div>
             </div>
@@ -105,12 +150,21 @@ const Bio = () => {
           {activeSection === "timeline" && (
             <div className="space-y-8">
               <div className="text-center mb-12">
-                <h2 className="font-display text-4xl font-bold uppercase tracking-wider mb-4">
-                  Musical Journey
-                </h2>
-                <p className="font-mono text-muted-foreground">
-                  A timeline of key moments in Aryiion's artistic evolution
-                </p>
+                <BlurText
+                  text="Musical Journey"
+                  delay={100}
+                  animateBy="words"
+                  direction="top"
+                  onAnimationComplete={handleAnimationComplete}
+                  className="font-display text-4xl font-bold uppercase tracking-wider mb-4"
+                />
+                <BlurText
+                  text="A timeline of key moments in Aryiion's artistic evolution"
+                  delay={150}
+                  animateBy="words"
+                  direction="top"
+                  className="font-mono text-muted-foreground"
+                />
               </div>
 
               <div className="relative">
@@ -140,11 +194,21 @@ const Bio = () => {
                             rel="noopener noreferrer"
                             className="font-display text-xl font-bold uppercase tracking-wider text-foreground group-hover:text-primary transition-all duration-300 mb-2 block hover:text-primary cursor-pointer hover:scale-105 transform"
                           >
-                            {era.title}
+                            <BlurText
+                              text={era.title}
+                              delay={100 + (index * 50)}
+                              animateBy="words"
+                              direction="top"
+                              className="inline"
+                            />
                           </a>
-                          <p className="text-muted-foreground text-sm font-mono group-hover:text-foreground transition-colors duration-300">
-                            {era.description}
-                          </p>
+                          <BlurText
+                            text={era.description}
+                            delay={150 + (index * 50)}
+                            animateBy="words"
+                            direction="top"
+                            className="text-muted-foreground text-sm font-mono group-hover:text-foreground transition-colors duration-300"
+                          />
                         </div>
                       </div>
                     </div>
@@ -159,9 +223,16 @@ const Bio = () => {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-border py-8 mt-16">
-        <div className="container mx-auto px-4 text-center">
-          <div className="font-mono text-xs text-muted-foreground">
-            © 2025 ARYIION. ALL RIGHTS RESERVED.
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center">
+            <BlurText
+              text="© 2025 ARYIION. ALL RIGHTS RESERVED."
+              delay={100}
+              animateBy="words"
+              direction="top"
+              onAnimationComplete={handleAnimationComplete}
+              className="font-mono text-xs text-muted-foreground text-center"
+            />
           </div>
         </div>
       </footer>
