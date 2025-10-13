@@ -6,7 +6,7 @@ import card1 from "@/assets/card-1.jpg";
 import card2 from "@/assets/card-2.jpg";
 import card3 from "@/assets/card-3.jpg";
 import card4 from "@/assets/card-4.jpg";
-import { Music, Video, Image as ImageIcon, Headphones } from "lucide-react";
+import { Music, Video, Image as ImageIcon, Headphones, User } from "lucide-react";
 
 const Explore = () => {
   const contentItems = [
@@ -17,10 +17,11 @@ const Explore = () => {
   ];
 
   const categories = [
-    { icon: Music, label: "Music", count: "12 Tracks" },
-    { icon: Video, label: "Videos", count: "8 Videos" },
-    { icon: ImageIcon, label: "Gallery", count: "24 Images" },
-    { icon: Headphones, label: "Live Sets", count: "5 Mixes" },
+    { icon: Music, label: "Music", count: "12 Tracks", link: "/music" },
+    { icon: Video, label: "Videos", count: "8 Videos", link: "/videos" },
+    { icon: ImageIcon, label: "Gallery", count: "24 Images", link: "/gallery" },
+    { icon: User, label: "Bio", count: "Artist Story", link: "/bio" },
+    { icon: Headphones, label: "Live Sets", count: "5 Mixes", link: "/live-sets" },
   ];
 
   return (
@@ -52,13 +53,14 @@ const Explore = () => {
           </div>
 
           {/* Categories Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto mb-20">
             {categories.map((cat, index) => {
               const Icon = cat.icon;
               return (
-                <div
+                <Link
                   key={cat.label}
-                  className="group relative bg-card border-2 border-border hover:border-primary p-6 rounded-lg transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] cursor-pointer animate-fade-in"
+                  to={cat.link}
+                  className="group relative bg-card border-2 border-border hover:border-primary p-6 rounded-lg transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] cursor-pointer animate-fade-in hover:scale-105 transform"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="text-center">
@@ -73,7 +75,7 @@ const Explore = () => {
                     </p>
                   </div>
                   <div className="absolute inset-0 border-2 border-primary opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
-                </div>
+                </Link>
               );
             })}
           </div>

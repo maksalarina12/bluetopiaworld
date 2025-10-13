@@ -3,6 +3,36 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Navigation from "@/components/Navigation";
 import HudOverlay from "@/components/HudOverlay";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import aryiionLogo from "@/assets/aryiion-logo.png";
+
+// Hover Image Component
+const HoverImage = ({ src, hoverSrc, alt, className }: { src: string; hoverSrc: string; alt: string; className: string }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div 
+      className="relative w-full h-full overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <img 
+        src={src} 
+        alt={alt}
+        className={`${className} absolute inset-0 transition-opacity duration-500 ${
+          isHovered ? 'opacity-0' : 'opacity-100'
+        }`}
+      />
+      <img 
+        src={hoverSrc} 
+        alt={alt}
+        className={`${className} absolute inset-0 transition-opacity duration-500 ${
+          isHovered ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+    </div>
+  );
+};
 
 const Shop = () => {
   const products = [
@@ -12,6 +42,7 @@ const Shop = () => {
       price: "$7,82",
       description: "Anomaly it's describe our life",
       image: "/src/assets/anomalyblack2.jpg",
+      hoverImage: "/src/assets/anomalyblack.jpg",
       shopeeUrl: "https://shopee.co.id/product/1146843343/25956401270/",
       status: "Pre-order"
     },
@@ -21,6 +52,7 @@ const Shop = () => {
       price: "$7,82",
       description: "Anomaly it's describe our life",
       image: "/src/assets/anomalyblack.jpg",
+      hoverImage: "/src/assets/anomalyblack2.jpg",
       shopeeUrl: "https://shopee.co.id/product/1146843343/25855094589/",
       status: "Pre-order"
     },
@@ -30,6 +62,7 @@ const Shop = () => {
       price: "$7,82",
       description: "Physical CD of the Electronic Dreams EP",
       image: "/src/assets/logowhitedone.png",
+      hoverImage: "/src/assets/aryiion-logo.png",
       shopeeUrl: "https://shopee.co.id/aryiion-electronic-dreams-cd",
       status: "In Stock"
     },
@@ -39,6 +72,7 @@ const Shop = () => {
       price: "$49.99",
       description: "Comfortable hoodie with embroidered Aryiion branding",
       image: "/src/assets/logowhitedone.png",
+      hoverImage: "/src/assets/aryiion-logo.png",
       shopeeUrl: "https://shopee.co.id/aryiion-hoodie",
       status: "In Stock"
     },
@@ -48,6 +82,7 @@ const Shop = () => {
       price: "$9.99",
       description: "Complete digital collection of all Aryiion releases",
       image: "/src/assets/logowhitedone.png",
+      hoverImage: "/src/assets/aryiion-logo.png",
       shopeeUrl: "https://shopee.co.id/aryiion-digital-bundle",
       status: "Digital"
     },
@@ -57,6 +92,7 @@ const Shop = () => {
       price: "$19.99",
       description: "Set of 3 high-quality posters featuring album artwork",
       image: "/src/assets/logowhitedone.png",
+      hoverImage: "/src/assets/aryiion-logo.png",
       shopeeUrl: "https://shopee.co.id/aryiion-poster-set",
       status: "In Stock"
     }
@@ -104,8 +140,9 @@ const Shop = () => {
               >
                 <CardHeader>
                   <div className="mx-auto mb-4 w-full aspect-square bg-secondary/30 rounded-lg flex items-center justify-center overflow-hidden">
-                    <img 
+                    <HoverImage 
                       src={product.image} 
+                      hoverSrc={product.hoverImage}
                       alt={product.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />

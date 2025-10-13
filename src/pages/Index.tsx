@@ -8,23 +8,33 @@ import logo from "@/assets/aryiion-logo.png";
 
 const Index = () => {
   const [showTrackList, setShowTrackList] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   const journeyEras = [
-    { id: 1, title: "BLUETOPIA ERA", description: "The beginning of a new chapter", year: "2025" },
-    { id: 2, title: "LKENANGAN YANG HILANG", description: "Fragments of the past", year: "2023" },
-    { id: 3, title: "KAU DAN BULAN", description: "Emotions in digital form", year: "2021" },
-    { id: 5, title: "LUPAKAN AKU", description: "The inception of growth", year: "2019" },
-    { id: 6, title: "LEPASKAN", description: "The inception of growth", year: "2019" },
-    { id: 7, title: "SEANDAINYA", description: "The inception of growth", year: "2019" },
-    { id: 8, title: "JATUH CINTA PADAMU", description: "The inception of growth", year: "2019" },
-    { id: 9, title: "DARI MIMPI", description: "The inception of growth", year: "2019" },
+    { id: 1, title: "BLUETOPIA ERA", description: "The beginning of a new chapter", year: "2025", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 2, title: "KENANGAN YANG HILANG", description: "Fragments of the past", year: "2023", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp?si=53629e57ea234389" },
+    { id: 3, title: "KAU DAN BULAN", description: "Emotions in digital form", year: "2021", spotifyUrl: "https://open.spotify.com/track/0PR7gLVNIwp1plbCFTffM0?si=f9abe2c3d2134aae" },
+    { id: 5, title: "LUPAKAN AKU", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/0XEFpf8JiQ0?si=3hY8gKrH9G8yAtRx" },
+    { id: 6, title: "LEPASKAN", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/5GsS2jzsPz7bHtP5iA5Lob?si=0bac5eb3f6814cc8" },
+    { id: 7, title: "SEANDAINYA", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 8, title: "JATUH CINTA PADAMU", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 9, title: "DARI MIMPI", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/2MGUvZpXpPZ7YucifAmuFE?si=96cef3e00e1e46e9" },
   ];
 
   const scrollToTracks = () => {
+    setIsFadingOut(false);
     setShowTrackList(true);
     setTimeout(() => {
       document.getElementById('tracklist')?.scrollIntoView({ behavior: 'smooth' });
     }, 100);
+  };
+
+  const handleBackToTop = () => {
+    setIsFadingOut(true);
+    setTimeout(() => {
+      setShowTrackList(false);
+      setIsFadingOut(false);
+    }, 300); // Match the fade-out duration
   };
 
   return (
@@ -61,28 +71,87 @@ const Index = () => {
           
           <button 
             onClick={scrollToTracks}
-            className="mt-8 font-mono text-sm tracking-widest text-muted-foreground hover:text-primary uppercase transition-all duration-300 hover:scale-110 cursor-pointer group block mx-auto"
+            className="mt-8 font-mono text-sm tracking-widest text-muted-foreground hover:text-primary uppercase transition-all duration-500 hover:scale-110 cursor-pointer group block mx-auto relative overflow-hidden will-change-transform"
+            style={{ transformOrigin: 'center' }}
           >
-            <span className="block group-hover:text-primary transition-colors">Bluetopia World</span>
-            <div className="w-0 h-0.5 bg-primary mx-auto mt-1 group-hover:w-full transition-all duration-300"></div>
+            <span className="block group-hover:text-primary transition-colors duration-500 relative z-10">Bluetopia World</span>
+            <div className="w-0 h-0.5 bg-primary mx-auto mt-1 group-hover:w-full transition-all duration-500"></div>
+            <div className="absolute inset-0 bg-primary/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-full blur-xl"></div>
           </button>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
-          <div className="flex flex-col items-center gap-2 animate-bounce">
-            <div className="w-px h-12 bg-primary opacity-50"></div>
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse-glow"></div>
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 group cursor-pointer" onClick={scrollToTracks}>
+          <div className="flex flex-col items-center gap-2 animate-bounce group-hover:animate-pulse">
+            <div className="w-px h-12 bg-primary opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse-glow group-hover:scale-125 transition-transform duration-300"></div>
+            <div className="absolute inset-0 bg-primary/20 rounded-full scale-0 group-hover:scale-150 transition-transform duration-500 blur-sm"></div>
           </div>
         </div>
       </section>
 
       {/* Track List Section */}
       {showTrackList && (
-        <section id="tracklist" className="relative z-10 container mx-auto px-4 py-24">
-          <TrackList />
+        <section 
+          id="tracklist" 
+          className={`relative z-10 container mx-auto px-4 py-24 transition-all duration-300 ${
+            isFadingOut 
+              ? 'opacity-0 transform translate-y-4' 
+              : 'opacity-100 transform translate-y-0 animate-fade-in'
+          }`}
+        >
+          <TrackList onBackToTop={handleBackToTop} />
         </section>
       )}
+
+      {/* Latest Song Preview Section */}
+      <section className="relative z-10 container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold uppercase tracking-wider text-foreground mb-4">
+              LATEST RELEASE
+            </h2>
+            <p className="font-mono text-sm tracking-widest text-primary uppercase">
+              Preview the newest track
+            </p>
+          </div>
+          
+          {/* Spotify Preview */}
+          <div className="flex justify-center">
+            <div className="w-full max-w-2xl group">
+              <div className="bg-card border-4 border-primary/50 rounded-xl p-8 hover:border-primary transition-all duration-500 hover:shadow-[0_0_40px_rgba(34,197,94,0.5)] group relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Spotify Embed */}
+                <div className="bg-black/95 rounded-xl p-6 border-2 border-primary/40 group-hover:border-primary/60 transition-all duration-500 relative z-10">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-4 h-4 bg-red-500 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
+                    <div className="w-4 h-4 bg-yellow-500 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
+                    <div className="w-4 h-4 bg-green-500 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
+                    <div className="flex-1 h-px bg-primary/40 group-hover:bg-primary/80 transition-colors duration-300"></div>
+                  </div>
+                  
+                  {/* Spotify iframe embed */}
+                  <iframe 
+                    src="https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp?utm_source=generator" 
+                    width="100%" 
+                    height="200" 
+                    frameBorder="0" 
+                    allowTransparency={true} 
+                    allow="encrypted-media"
+                    className="rounded-lg group-hover:scale-105 transition-transform duration-500"
+                  ></iframe>
+                </div>
+                
+                <div className="mt-6 text-center relative z-10">
+                  <p className="font-mono text-sm text-primary font-semibold uppercase tracking-wider group-hover:text-primary/80 transition-colors duration-300">
+                    Stream on Spotify
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Journey Section */}
       <section className="relative z-10 container mx-auto px-4 py-16">
@@ -113,17 +182,25 @@ const Index = () => {
                   
                   {/* Content card */}
                   <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                    <div className="bg-card border border-border rounded-lg p-6 hover:border-primary transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)] group">
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="font-mono text-sm text-primary font-bold">{era.year}</span>
-                        <div className="flex-1 h-px bg-primary opacity-30"></div>
+                    <div className="bg-card border border-border rounded-lg p-6 hover:border-primary transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] group relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="relative z-10">
+                        <div className="flex items-center gap-3 mb-3">
+                          <span className="font-mono text-sm text-primary font-bold group-hover:scale-110 transition-transform duration-300">{era.year}</span>
+                          <div className="flex-1 h-px bg-primary opacity-30 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <a 
+                          href={era.spotifyUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="font-display text-xl font-bold uppercase tracking-wider text-foreground group-hover:text-primary transition-all duration-300 mb-2 block hover:text-primary cursor-pointer hover:scale-105 transform"
+                        >
+                          {era.title}
+                        </a>
+                        <p className="text-muted-foreground text-sm font-mono group-hover:text-foreground transition-colors duration-300">
+                          {era.description}
+                        </p>
                       </div>
-                      <h3 className="font-display text-xl font-bold uppercase tracking-wider text-foreground group-hover:text-primary transition-colors duration-300 mb-2">
-                        {era.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm font-mono">
-                        {era.description}
-                      </p>
                     </div>
                   </div>
                 </div>
