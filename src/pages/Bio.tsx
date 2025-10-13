@@ -7,49 +7,17 @@ const Bio = () => {
   const [activeSection, setActiveSection] = useState("story");
   const [hoveredTimeline, setHoveredTimeline] = useState<number | null>(null);
 
-  const timeline = [
-    {
-      year: "2019",
-      title: "The Beginning",
-      description: "Started the musical journey with first electronic experiments",
-      achievements: ["First Track Released", "Studio Setup", "Sound Discovery"]
-    },
-    {
-      year: "2021",
-      title: "Digital Evolution",
-      description: "Explored new soundscapes and digital production techniques",
-      achievements: ["Kau Dan Bulan", "Sound Design", "Visual Integration"]
-    },
-    {
-      year: "2023",
-      title: "Creative Breakthrough",
-      description: "Developed signature sound and visual identity",
-      achievements: ["Kenangan Yang Hilang", "Live Performances", "Fan Base Growth"]
-    },
-    {
-      year: "2025",
-      title: "Bluetopia Era",
-      description: "Entering a new chapter with expanded creative vision",
-      achievements: ["Bluetopia Release", "World Tour", "Collaborations"]
-    }
+  const journeyEras = [
+    { id: 1, title: "BLUETOPIA ERA", description: "The beginning of a new chapter", year: "2025", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 2, title: "KENANGAN YANG HILANG", description: "Fragments of the past", year: "2023", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp?si=53629e57ea234389" },
+    { id: 3, title: "KAU DAN BULAN", description: "Emotions in digital form", year: "2021", spotifyUrl: "https://open.spotify.com/track/0PR7gLVNIwp1plbCFTffM0?si=f9abe2c3d2134aae" },
+    { id: 5, title: "LUPAKAN AKU", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/0XEFpf8JiQ0?si=3hY8gKrH9G8yAtRx" },
+    { id: 6, title: "LEPASKAN", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/5GsS2jzsPz7bHtP5iA5Lob?si=0bac5eb3f6814cc8" },
+    { id: 7, title: "SEANDAINYA", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 8, title: "JATUH CINTA PADAMU", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 9, title: "DARI MIMPI", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/2MGUvZpXpPZ7YucifAmuFE?si=96cef3e00e1e46e9" },
   ];
 
-  const stats = [
-    { label: "Tracks Released", value: "12", icon: "🎵" },
-    { label: "Years Active", value: "6", icon: "⏰" },
-    { label: "Live Performances", value: "50+", icon: "🎤" },
-    { label: "Countries Visited", value: "15", icon: "🌍" },
-    { label: "Collaborations", value: "8", icon: "🤝" },
-    { label: "Awards Won", value: "3", icon: "🏆" }
-  ];
-
-  const influences = [
-    { name: "Aphex Twin", genre: "Ambient Electronic", impact: "Sound Design" },
-    { name: "Boards of Canada", genre: "IDM", impact: "Atmospheric Production" },
-    { name: "Burial", genre: "Future Garage", impact: "Rhythmic Innovation" },
-    { name: "Oneohtrix Point Never", genre: "Experimental", impact: "Sonic Exploration" },
-    { name: "Tim Hecker", genre: "Ambient", impact: "Textural Soundscapes" }
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -66,18 +34,13 @@ const Bio = () => {
             <h1 className="font-display text-6xl md:text-8xl font-bold uppercase tracking-wider mb-4">
               Bio
             </h1>
-            <Link to="/" className="inline-block mt-4 font-mono text-sm text-muted-foreground hover:text-primary transition-colors">
-              ← Back to Home
-            </Link>
           </div>
 
           {/* Navigation Tabs */}
           <div className="flex flex-wrap justify-center gap-4 mb-16">
             {[
               { id: "story", label: "Story" },
-              { id: "timeline", label: "Timeline" },
-              { id: "influences", label: "Influences" },
-              { id: "stats", label: "Statistics" }
+              { id: "timeline", label: "Timeline" }
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -104,10 +67,11 @@ const Bio = () => {
                   The Artist Behind the Music
                 </h2>
                 <p className="font-mono text-lg text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-                  Aryiion is an electronic music producer and visual artist who creates immersive soundscapes 
-                  that blend ambient textures with rhythmic complexity. Born from a fascination with digital 
-                  sound manipulation and visual storytelling, Aryiion's work explores the intersection of 
-                  technology and human emotion.
+                Aryiion is an emerging artist from Indonesia, born in 2005, blending the soulful touch of R&B, the raw flow of Modern Rap, and the emotional depth of Slow Rock.
+                His sound moves between smooth melodies and heartfelt lyricism, creating music that speaks to love, struggle, and self-reflection. From his beginnings on Aryiion.
+                Aryiion has built a loyal following through his honest storytelling and authentic vibe. With his unique voice and cinematic production style, he delivers tracks
+                that feel both intimate and timeless. Now, Aryiion is gearing up for his upcoming album, dropping on October 26, 2025 a project that showcases his growth, emotion,
+                and artistic evolution. This relese marks a new chapter for Aryiion as he continues shaping his sound and making his mark on the next wave of Indonesian music.
                 </p>
               </div>
 
@@ -153,41 +117,34 @@ const Bio = () => {
                 {/* Timeline Line */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary opacity-30"></div>
                 
-                {timeline.map((item, index) => (
+                {journeyEras.map((era, index) => (
                   <div
-                    key={index}
-                    className={`relative flex items-center mb-16 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                    onMouseEnter={() => setHoveredTimeline(index)}
-                    onMouseLeave={() => setHoveredTimeline(null)}
+                    key={era.id}
+                    className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
                   >
-                    {/* Timeline Dot */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-2 border-background z-10 animate-pulse-glow"></div>
+                    {/* Timeline dot */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-primary rounded-full border-2 border-background z-10 animate-pulse-glow"></div>
                     
-                    {/* Content Card */}
+                    {/* Content card */}
                     <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                      <div className={`bg-card border rounded-2xl p-8 transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] group ${
-                        hoveredTimeline === index ? 'border-primary' : 'border-border hover:border-primary'
-                      }`}>
-                        <div className="flex items-center gap-4 mb-4">
-                          <span className="font-mono text-2xl font-bold text-primary">{item.year}</span>
-                          <div className="flex-1 h-px bg-primary opacity-30"></div>
-                        </div>
-                        
-                        <h3 className="font-display text-2xl font-bold uppercase tracking-wider mb-3 group-hover:text-primary transition-colors">
-                          {item.title}
-                        </h3>
-                        
-                        <p className="font-mono text-sm text-muted-foreground mb-4">
-                          {item.description}
-                        </p>
-                        
-                        <div className="space-y-2">
-                          {item.achievements.map((achievement, i) => (
-                            <div key={i} className="flex items-center gap-2">
-                              <div className="w-2 h-2 bg-primary rounded-full"></div>
-                              <span className="font-mono text-xs text-muted-foreground">{achievement}</span>
-                            </div>
-                          ))}
+                      <div className="bg-card border border-border rounded-lg p-6 hover:border-primary transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] group relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="relative z-10">
+                          <div className="flex items-center gap-3 mb-3">
+                            <span className="font-mono text-sm text-primary font-bold group-hover:scale-110 transition-transform duration-300">{era.year}</span>
+                            <div className="flex-1 h-px bg-primary opacity-30 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          </div>
+                          <a 
+                            href={era.spotifyUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="font-display text-xl font-bold uppercase tracking-wider text-foreground group-hover:text-primary transition-all duration-300 mb-2 block hover:text-primary cursor-pointer hover:scale-105 transform"
+                          >
+                            {era.title}
+                          </a>
+                          <p className="text-muted-foreground text-sm font-mono group-hover:text-foreground transition-colors duration-300">
+                            {era.description}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -197,72 +154,13 @@ const Bio = () => {
             </div>
           )}
 
-          {/* Influences Section */}
-          {activeSection === "influences" && (
-            <div className="space-y-12">
-              <div className="text-center mb-12">
-                <h2 className="font-display text-4xl font-bold uppercase tracking-wider mb-4">
-                  Musical Influences
-                </h2>
-                <p className="font-mono text-muted-foreground">
-                  Artists and sounds that have shaped Aryiion's creative vision
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {influences.map((influence, index) => (
-                  <div
-                    key={index}
-                    className="bg-card border border-border rounded-2xl p-6 group hover:border-primary transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)]"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <h3 className="font-display text-xl font-bold uppercase tracking-wider mb-2 group-hover:text-primary transition-colors">
-                      {influence.name}
-                    </h3>
-                    <p className="font-mono text-sm text-primary mb-2">{influence.genre}</p>
-                    <p className="font-mono text-xs text-muted-foreground">{influence.impact}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Stats Section */}
-          {activeSection === "stats" && (
-            <div className="space-y-12">
-              <div className="text-center mb-12">
-                <h2 className="font-display text-4xl font-bold uppercase tracking-wider mb-4">
-                  Career Statistics
-                </h2>
-                <p className="font-mono text-muted-foreground">
-                  Numbers that tell the story of Aryiion's musical journey
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {stats.map((stat, index) => (
-                  <div
-                    key={index}
-                    className="bg-card border border-primary/30 rounded-2xl p-8 text-center group hover:border-primary transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)]"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="text-4xl mb-4">{stat.icon}</div>
-                    <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                    <div className="font-mono text-sm text-muted-foreground uppercase tracking-wider">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </div>
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-border py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
-          <div className="font-mono text-sm text-muted-foreground">
+          <div className="font-mono text-xs text-muted-foreground">
             © 2025 ARYIION. ALL RIGHTS RESERVED.
           </div>
         </div>

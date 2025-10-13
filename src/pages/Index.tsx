@@ -191,7 +191,7 @@ const Index = () => {
                 />
               </div>
               <p className="font-mono text-sm tracking-widest text-primary uppercase">
-                A timeline of creation and evolution
+                Song Year To Years
               </p>
             </div>
 
@@ -245,7 +245,7 @@ const Index = () => {
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0} delay={600}>
         <footer className="relative z-10 border-t border-border py-8">
           <div className="container mx-auto px-4 text-center">
-            <div className="font-mono text-sm text-muted-foreground">
+            <div className="font-mono text-xs text-muted-foreground">
               © 2025 ARYIION. ALL RIGHTS RESERVED.
             </div>
           </div>

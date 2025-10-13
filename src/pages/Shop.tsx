@@ -232,7 +232,7 @@ const Shop = () => {
       {/* Footer */}
       <footer className="relative z-10 border-t border-border py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
-          <div className="font-mono text-sm text-muted-foreground">
+          <div className="font-mono text-xs text-muted-foreground">
             © 2025 ARYIION. ALL RIGHTS RESERVED.
           </div>
         </div>

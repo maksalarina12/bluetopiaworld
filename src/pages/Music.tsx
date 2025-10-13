@@ -131,9 +131,6 @@ const Music = () => {
               <h1 className="font-display text-6xl md:text-8xl font-bold uppercase tracking-wider mb-4">
                 Music
               </h1>
-              <Link to="/" className="inline-block mt-4 font-mono text-sm text-muted-foreground hover:text-primary transition-colors">
-                ← Back to Home
-              </Link>
             </div>
           </FadeContent>
 
@@ -147,6 +144,16 @@ const Music = () => {
                   className="w-full h-96 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent pointer-events-none"></div>
+                {/* Noise Effect on border */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <Noise
+                    patternSize={250}
+                    patternScaleX={1}
+                    patternScaleY={1}
+                    patternRefreshInterval={2}
+                    patternAlpha={15}
+                  />
+                </div>
                 <canvas
                   ref={canvasRef}
                   width={800}
@@ -274,7 +281,7 @@ const Music = () => {
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0} delay={800}>
         <footer className="relative z-10 border-t border-border py-8 mt-16">
           <div className="container mx-auto px-4 text-center">
-            <div className="font-mono text-sm text-muted-foreground">
+            <div className="font-mono text-xs text-muted-foreground">
               © 2025 ARYIION. ALL RIGHTS RESERVED.
             </div>
           </div>

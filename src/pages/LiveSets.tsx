@@ -168,9 +168,6 @@ const LiveSets = () => {
             <h1 className="font-display text-6xl md:text-8xl font-bold uppercase tracking-wider mb-4">
               Live Sets
             </h1>
-            <Link to="/" className="inline-block mt-4 font-mono text-sm text-muted-foreground hover:text-primary transition-colors">
-              ← Back to Home
-            </Link>
           </div>
 
           {/* Waveform Visualizer */}
@@ -339,35 +336,13 @@ const LiveSets = () => {
             </div>
           )}
 
-          {/* Stats Section */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-            <div className="bg-card border border-primary/30 rounded-2xl p-8 text-center group hover:border-primary transition-all duration-300">
-              <div className="text-4xl font-bold text-primary mb-2">6</div>
-              <div className="font-mono text-sm text-muted-foreground uppercase tracking-wider">Live Sets</div>
-            </div>
-            
-            <div className="bg-card border border-primary/30 rounded-2xl p-8 text-center group hover:border-primary transition-all duration-300">
-              <div className="text-4xl font-bold text-primary mb-2">21K</div>
-              <div className="font-mono text-sm text-muted-foreground uppercase tracking-wider">Total Audience</div>
-            </div>
-            
-            <div className="bg-card border border-primary/30 rounded-2xl p-8 text-center group hover:border-primary transition-all duration-300">
-              <div className="text-4xl font-bold text-primary mb-2">102</div>
-              <div className="font-mono text-sm text-muted-foreground uppercase tracking-wider">Tracks Played</div>
-            </div>
-            
-            <div className="bg-card border border-primary/30 rounded-2xl p-8 text-center group hover:border-primary transition-all duration-300">
-              <div className="text-4xl font-bold text-primary mb-2">91%</div>
-              <div className="font-mono text-sm text-muted-foreground uppercase tracking-wider">Avg Energy</div>
-            </div>
-          </div>
         </div>
       </div>
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-border py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
-          <div className="font-mono text-sm text-muted-foreground">
+          <div className="font-mono text-xs text-muted-foreground">
             © 2025 ARYIION. ALL RIGHTS RESERVED.
           </div>
         </div>
