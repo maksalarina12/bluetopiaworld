@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import HudOverlay from "@/components/HudOverlay";
+import CircularGallery from "@/components/CircularGallery";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -148,56 +149,18 @@ const Gallery = () => {
             ))}
           </div>
 
-          {/* Masonry Grid */}
-          <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6 mb-16">
-            {filteredImages.map((image, index) => (
-              <div
-                key={image.id}
-                className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] cursor-pointer break-inside-avoid"
-                style={{ animationDelay: `${index * 100}ms` }}
-                onClick={() => setSelectedImage(image.id)}
-              >
-                {/* Image Container */}
-                <div className="relative aspect-square bg-gradient-to-br from-primary/20 to-primary/5 overflow-hidden">
-                  <img 
-                    src={image.src} 
-                    alt={image.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-primary/80 rounded-full flex items-center justify-center mb-3 mx-auto">
-                        <span className="text-2xl">🔍</span>
-                      </div>
-                      <p className="font-mono text-sm text-white">View Full Size</p>
-                    </div>
-                  </div>
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4 bg-primary/90 text-background px-3 py-1 rounded-full font-mono text-xs uppercase">
-                    {image.category}
-                  </div>
-                </div>
-
-                {/* Image Info */}
-                <div className="p-6">
-                  <h3 className="font-display text-lg font-bold uppercase tracking-wider mb-2 group-hover:text-primary transition-colors">
-                    {image.title}
-                  </h3>
-                  
-                  <p className="font-mono text-sm text-muted-foreground mb-3">
-                    {image.description}
-                  </p>
-                  
-                  <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span className="font-mono">{image.date}</span>
-                    <span className="font-mono">#{image.id.toString().padStart(3, '0')}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Circular Gallery */}
+          <div style={{ height: '600px', position: 'relative' }}>
+            <CircularGallery 
+              bend={3} 
+              textColor="#ffffff" 
+              borderRadius={0.05} 
+              scrollEase={0.02}
+              items={filteredImages.map(img => ({
+                image: img.src,
+                text: img.title
+              }))}
+            />
           </div>
 
           {/* Lightbox Modal */}

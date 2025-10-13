@@ -4,6 +4,8 @@ import HudOverlay from "@/components/HudOverlay";
 import Navigation from "@/components/Navigation";
 import TrackList from "@/components/TrackList";
 import FadeContent from "@/components/FadeContent";
+import TextPressure from "@/components/TextPressure";
+import TiltedCard from "@/components/TiltedCard";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/aryiion-logo.png";
 
@@ -62,13 +64,22 @@ const Index = () => {
               Explore
             </div>
             
-            {/* Logo with interaction */}
+            {/* Logo with TiltedCard effect */}
             <Link to="/explore" className="inline-block group">
-              <img 
-                src={logo} 
-                alt="Aryiion Logo" 
-                className="w-64 md:w-96 mx-auto transition-all duration-500 hover:scale-110 hover:drop-shadow-[0_0_30px_rgba(34,197,94,0.6)] cursor-pointer animate-fade-in filter brightness-110"
-              />
+              <TiltedCard
+                imageSrc={logo}
+                altText="Aryiion Logo"
+                captionText="Explore Aryiion's World"
+                containerHeight="500px"
+                containerWidth="500px"
+                imageHeight="500px"
+                imageWidth="500px"
+                rotateAmplitude={12}
+                scaleOnHover={1.1}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={false}
+              />``
             </Link>
             
             <button 
@@ -165,9 +176,20 @@ const Index = () => {
         <section className="relative z-10 container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-wider text-foreground mb-4">
-                THE JOURNEY
-              </h2>
+              <div className="mb-4" style={{position: 'relative', height: '150px'}}>
+                <TextPressure
+                  text="THE JOURNEY"
+                  flex={true}
+                  alpha={false}
+                  stroke={false}
+                  width={true}
+                  weight={true}
+                  italic={true}
+                  textColor="#ffffff"
+                  strokeColor="#22c55e"
+                  minFontSize={60}
+                />
+              </div>
               <p className="font-mono text-sm tracking-widest text-primary uppercase">
                 A timeline of creation and evolution
               </p>

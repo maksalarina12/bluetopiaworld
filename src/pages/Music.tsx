@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import HudOverlay from "@/components/HudOverlay";
 import FadeContent from "@/components/FadeContent";
+import Noise from "@/components/Noise";
 
 const Music = () => {
   const [currentTrack, setCurrentTrack] = useState(0);
@@ -163,12 +164,22 @@ const Music = () => {
               <div className="lg:col-span-1">
                 <div className="bg-card border border-primary/30 rounded-2xl p-8 text-center group hover:border-primary transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)]">
                   <div className="relative mb-8">
-                    <div className="w-64 h-64 mx-auto bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-64 h-64 mx-auto bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
                       <img 
                         src="/src/assets/bluetopia.jpg" 
                         alt="Bluetopia Album"
                         className="w-full h-full object-cover"
                       />
+                      {/* Noise Effect only on album art */}
+                      <div className="absolute inset-0 pointer-events-none">
+                        <Noise
+                          patternSize={250}
+                          patternScaleX={1}
+                          patternScaleY={1}
+                          patternRefreshInterval={2}
+                          patternAlpha={15}
+                        />
+                      </div>
                     </div>
                     <div className="absolute inset-0 bg-primary/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
