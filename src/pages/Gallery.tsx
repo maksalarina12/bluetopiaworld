@@ -6,70 +6,61 @@ import CircularGallery from "@/components/CircularGallery";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [activeFilter, setActiveFilter] = useState("All");
 
   const images = [
     {
       id: 1,
-      src: "/src/assets/aryiion-logo.png",
-      title: "Studio Session",
-      category: "Behind the Scenes",
-      description: "Aryiion in the studio creating magic",
+      src: "/src/assets/foto1.png",
+      title: "-",
+      description: "-",
       date: "2025"
     },
     {
       id: 2,
-      src: "/src/assets/aryiion-logo.png",
+      src: "/src/assets/foto2.png",
       title: "Concert Performance",
-      category: "Live",
       description: "Electrifying performance at the main stage",
       date: "2024"
     },
     {
       id: 3,
-      src: "/src/assets/aryiion-logo.png",
+      src: "/src/assets/foto3.png",
       title: "Album Artwork",
-      category: "Artwork",
       description: "Visual representation of the musical journey",
       date: "2025"
     },
     {
       id: 4,
-      src: "/src/assets/aryiion-logo.png",
+      src: "/src/assets/foto4.png",
       title: "Backstage Moments",
-      category: "Behind the Scenes",
       description: "Candid moments before the show",
       date: "2024"
     },
     {
       id: 5,
-      src: "/src/assets/aryiion-logo.png",
+      src: "/src/assets/foto5.png",
       title: "Visual Effects",
-      category: "Visuals",
       description: "Stunning visual effects during live performance",
       date: "2024"
     },
     {
       id: 6,
-      src: "/src/assets/aryiion-logo.png",
+      src: "/src/assets/foto6.png",
       title: "Fan Interaction",
-      category: "Fans",
       description: "Connecting with the audience",
       date: "2024"
     },
     {
       id: 7,
-      src: "/src/assets/aryiion-logo.png",
+      src: "/src/assets/foto7.png",
       title: "Equipment Setup",
-      category: "Behind the Scenes",
       description: "The technical side of the performance",
       date: "2024"
     },
     {
       id: 8,
-      src: "/src/assets/aryiion-logo.png",
-      title: "Stage Design",
-      category: "Visuals",
+      src: "/src/assets/bluetopia.jpg",
+      title: "Bluetopia Album",
       description: "Immersive stage design and lighting",
       date: "2024"
     },
@@ -77,7 +68,6 @@ const Gallery = () => {
       id: 9,
       src: "/src/assets/aryiion-logo.png",
       title: "Collaboration",
-      category: "Artwork",
       description: "Working with other artists",
       date: "2024"
     },
@@ -85,7 +75,6 @@ const Gallery = () => {
       id: 10,
       src: "/src/assets/aryiion-logo.png",
       title: "Recording Process",
-      category: "Behind the Scenes",
       description: "The creative process in the studio",
       date: "2024"
     },
@@ -93,7 +82,6 @@ const Gallery = () => {
       id: 11,
       src: "/src/assets/aryiion-logo.png",
       title: "Light Show",
-      category: "Visuals",
       description: "Mesmerizing light show synchronization",
       date: "2024"
     },
@@ -101,16 +89,11 @@ const Gallery = () => {
       id: 12,
       src: "/src/assets/aryiion-logo.png",
       title: "Crowd Energy",
-      category: "Live",
       description: "The energy of the live audience",
       date: "2024"
     }
   ];
 
-  const categories = ["All", "Behind the Scenes", "Live", "Artwork", "Visuals", "Fans"];
-  const filteredImages = activeFilter === "All" 
-    ? images 
-    : images.filter(img => img.category === activeFilter);
 
   return (
     <div className="min-h-screen bg-background">
@@ -129,22 +112,6 @@ const Gallery = () => {
             </h1>
           </div>
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveFilter(category)}
-                className={`px-6 py-3 rounded-full border-2 transition-all duration-300 font-mono text-sm uppercase tracking-wider ${
-                  activeFilter === category
-                    ? 'border-primary bg-primary text-background'
-                    : 'border-border text-muted-foreground hover:border-primary hover:text-primary'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
 
           {/* Circular Gallery */}
           <div style={{ height: '600px', position: 'relative' }}>
@@ -153,7 +120,7 @@ const Gallery = () => {
               textColor="#ffffff" 
               borderRadius={0.05} 
               scrollEase={0.02}
-              items={filteredImages.map(img => ({
+              items={images.map(img => ({
                 image: img.src,
                 text: img.title
               }))}
@@ -176,9 +143,9 @@ const Gallery = () => {
                   {/* Navigation Buttons */}
                   <button
                     onClick={() => {
-                      const currentIndex = filteredImages.findIndex(img => img.id === selectedImage);
-                      const prevIndex = currentIndex > 0 ? currentIndex - 1 : filteredImages.length - 1;
-                      setSelectedImage(filteredImages[prevIndex].id);
+                      const currentIndex = images.findIndex(img => img.id === selectedImage);
+                      const prevIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+                      setSelectedImage(images[prevIndex].id);
                     }}
                     className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/50 rounded-full border border-white/20 text-white hover:bg-white/10 transition-all duration-300 flex items-center justify-center"
                   >
@@ -187,9 +154,9 @@ const Gallery = () => {
                   
                   <button
                     onClick={() => {
-                      const currentIndex = filteredImages.findIndex(img => img.id === selectedImage);
-                      const nextIndex = currentIndex < filteredImages.length - 1 ? currentIndex + 1 : 0;
-                      setSelectedImage(filteredImages[nextIndex].id);
+                      const currentIndex = images.findIndex(img => img.id === selectedImage);
+                      const nextIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+                      setSelectedImage(images[nextIndex].id);
                     }}
                     className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/50 rounded-full border border-white/20 text-white hover:bg-white/10 transition-all duration-300 flex items-center justify-center"
                   >
@@ -199,8 +166,8 @@ const Gallery = () => {
                   {/* Image */}
                   <div className="aspect-video bg-black rounded-2xl overflow-hidden">
                     <img 
-                      src={filteredImages.find(img => img.id === selectedImage)?.src} 
-                      alt={filteredImages.find(img => img.id === selectedImage)?.title}
+                      src={images.find(img => img.id === selectedImage)?.src} 
+                      alt={images.find(img => img.id === selectedImage)?.title}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -208,17 +175,14 @@ const Gallery = () => {
                   {/* Image Info */}
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8">
                     <h3 className="font-display text-2xl font-bold uppercase tracking-wider text-white mb-2">
-                      {filteredImages.find(img => img.id === selectedImage)?.title}
+                      {images.find(img => img.id === selectedImage)?.title}
                     </h3>
                     <p className="font-mono text-sm text-white/80 mb-2">
-                      {filteredImages.find(img => img.id === selectedImage)?.description}
+                      {images.find(img => img.id === selectedImage)?.description}
                     </p>
                     <div className="flex items-center gap-4 text-xs text-white/60">
                       <span className="font-mono">
-                        {filteredImages.find(img => img.id === selectedImage)?.category}
-                      </span>
-                      <span className="font-mono">
-                        {filteredImages.find(img => img.id === selectedImage)?.date}
+                        {images.find(img => img.id === selectedImage)?.date}
                       </span>
                     </div>
                   </div>
@@ -231,7 +195,7 @@ const Gallery = () => {
       </div>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-border py-8 mt-16">
+      <footer className="fixed bottom-0 left-0 right-0 z-10 border-t border-border py-4 bg-background">
         <div className="container mx-auto px-4 text-center">
           <div className="font-mono text-xs text-muted-foreground">
             © 2025 ARYIION. ALL RIGHTS RESERVED.

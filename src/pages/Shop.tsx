@@ -42,7 +42,7 @@ const Shop = () => {
       price: "$7,82",
       description: "Anomaly it's describe our life",
       image: "/src/assets/anomalyblack2.jpg",
-      hoverImage: "/src/assets/anomalyblack.jpg",
+      hoverImage: "/src/assets/anomalywhite2.jpg",
       shopeeUrl: "https://shopee.co.id/product/1146843343/25956401270/",
       status: "Pre-order"
     },
@@ -52,7 +52,7 @@ const Shop = () => {
       price: "$7,82",
       description: "Anomaly it's describe our life",
       image: "/src/assets/anomalyblack.jpg",
-      hoverImage: "/src/assets/anomalyblack2.jpg",
+      hoverImage: "/src/assets/anomalywhite.jpg",
       shopeeUrl: "https://shopee.co.id/product/1146843343/25855094589/",
       status: "Pre-order"
     },

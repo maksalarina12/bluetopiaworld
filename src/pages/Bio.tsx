@@ -84,8 +84,12 @@ const Bio = () => {
           {activeSection === "story" && (
             <div className="space-y-12">
               <div className="bg-card border border-primary/30 rounded-2xl p-12 text-center">
-                <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full flex items-center justify-center mx-auto mb-8">
-                  <span className="text-6xl">🎭</span>
+                <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full flex items-center justify-center mx-auto mb-8 overflow-hidden border-4 border-primary/30">
+                  <img 
+                    src="/src/assets/ppspotify.jpeg" 
+                    alt="Aryiion Profile" 
+                    className="w-full h-full object-cover rounded-full"
+                  />
                 </div>
                 <div className="flex justify-center">
                   <BlurText
@@ -117,7 +121,10 @@ const Bio = () => {
                   className="font-display text-2xl font-bold uppercase tracking-wider mb-4 group-hover:text-primary transition-colors"
                 />
                   <BlurText
-                    text="Music is the bridge between the digital and the organic. Every sound tells a story, every rhythm carries emotion, and every composition is a journey through the depths of human experience."
+                    text="Music for Aryiion is more than sound it’s emotion in motion. Every beat speaks,
+                  every lyric breathes life, and every track is a reflection of raw human experience.
+                  Blending Hip-Hop rhythm, R&B soul, and the depth of Slow Rock, Aryiion creates a
+                  sonic bridge between vulnerability and strength, between story and sound."
                     delay={150}
                     animateBy="words"
                     direction="top"
@@ -135,7 +142,10 @@ const Bio = () => {
                   className="font-display text-2xl font-bold uppercase tracking-wider mb-4 group-hover:text-primary transition-colors"
                 />
                   <BlurText
-                    text="The visual element is as important as the audio. Each track is accompanied by carefully crafted visuals that enhance the emotional impact and create a complete sensory experience."
+                    text="Aryiion believes music should be seen as much as it’s heard. Each release is paired
+                  with a carefully crafted visual world — cinematic, moody, and immersive designed to
+                  extend the emotion beyond sound. His visuals amplify the message, turning every track
+                  into a complete sensory journey."
                     delay={250}
                     animateBy="words"
                     direction="top"

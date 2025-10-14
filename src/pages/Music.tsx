@@ -16,52 +16,45 @@ const Music = () => {
   const tracks = [
     {
       id: 1,
-      title: "Bluetopia",
+      title: "CINDERELLA",
       artist: "Aryiion",
       duration: "3:45",
       cover: "/src/assets/aryiion-logo.png",
-      audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp"
+      audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp?utm_source=generator"
     },
     {
       id: 2,
-      title: "Kenangan Yang Hilang",
-      artist: "Aryiion",
+      title: "I WANT IT ALL",
+      artist: "Aryiion Ft. FADHIL",
       duration: "4:12",
       cover: "/src/assets/aryiion-logo.png",
-      audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp"
+      audio: ""
     },
     {
       id: 3,
-      title: "Kau Dan Bulan",
+      title: "TEDUH",
       artist: "Aryiion",
       duration: "3:28",
       cover: "/src/assets/aryiion-logo.png",
-      audio: "https://open.spotify.com/embed/track/0PR7gLVNIwp1plbCFTffM0"
+      audio: ""
     },
     {
       id: 4,
-      title: "Lupakan Aku",
-      artist: "Aryiion",
+      title: "BEHIND",
+      artist: "Aryiion Ft. Lil-Khai, Yung Uber",
       duration: "4:05",
       cover: "/src/assets/aryiion-logo.png",
       audio: "https://open.spotify.com/embed/track/0XEFpf8JiQ0"
     },
     {
       id: 5,
-      title: "Lepaskan",
+      title: "PERCAYA",
       artist: "Aryiion",
       duration: "3:52",
       cover: "/src/assets/aryiion-logo.png",
       audio: "https://open.spotify.com/embed/track/5GsS2jzsPz7bHtP5iA5Lob"
     },
-    {
-      id: 6,
-      title: "Dari Mimpi",
-      artist: "Aryiion",
-      duration: "4:18",
-      cover: "/src/assets/aryiion-logo.png",
-      audio: "https://open.spotify.com/embed/track/2MGUvZpXpPZ7YucifAmuFE"
-    }
+    
   ];
 
   // Audio Visualizer
