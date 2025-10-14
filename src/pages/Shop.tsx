@@ -68,21 +68,21 @@ const Shop = () => {
     },
     {
       id: 4,
-      name: "Aryiion Hoodie",
+      name: "BLUETOPIA MINI LIGHTER",
       price: "$49.99",
       description: "Comfortable hoodie with embroidered Aryiion branding",
-      image: "/src/assets/logowhitedone.png",
-      hoverImage: "/src/assets/aryiion-logo.png",
+      image: "/src/assets/korekkanan.png",
+      hoverImage: "/src/assets/korekkiri.png",
       shopeeUrl: "https://shopee.co.id/aryiion-hoodie",
       status: "In Stock"
     },
     {
       id: 5,
-      name: "Digital Album Bundle",
+      name: "BLUETOPIA CAP",
       price: "$9.99",
       description: "Complete digital collection of all Aryiion releases",
-      image: "/src/assets/logowhitedone.png",
-      hoverImage: "/src/assets/aryiion-logo.png",
+      image: "/src/assets/frontcap.png",
+      hoverImage: "/src/assets/backcap.png",
       shopeeUrl: "https://shopee.co.id/aryiion-digital-bundle",
       status: "Digital"
     },
