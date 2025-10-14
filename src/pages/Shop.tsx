@@ -58,11 +58,11 @@ const Shop = () => {
     },
     {
       id: 3,
-      name: "Electronic Dreams CD",
+      name: "Bluetopia Lighter",
       price: "$7,82",
       description: "Physical CD of the Electronic Dreams EP",
-      image: "/src/assets/logowhitedone.png",
-      hoverImage: "/src/assets/aryiion-logo.png",
+      image: "/src/assets/front.png",
+      hoverImage: "/src/assets/backligh.png",
       shopeeUrl: "https://shopee.co.id/aryiion-electronic-dreams-cd",
       status: "In Stock"
     },
