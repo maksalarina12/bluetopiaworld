@@ -79,7 +79,7 @@ const Index = () => {
                 showMobileWarning={false}
                 showTooltip={true}
                 displayOverlayContent={false}
-              />``
+              />
             </Link>
             
             <button 

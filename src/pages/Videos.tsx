@@ -17,7 +17,6 @@ const Videos = () => {
       youtubeUrl: "https://youtu.be/ez8v-GV-_g0?si=WQTeM7b4G1ZIZTVr", // Direct YouTube link - ganti dengan link YouTube Anda
       views: "1.2M",
       date: "2025",
-      category: "Music Video",
       description: "The official music video for Bluetopia, featuring stunning visuals and atmospheric cinematography."
     },
     {
@@ -28,7 +27,6 @@ const Videos = () => {
       youtubeUrl: "https://www.youtube.com/watch?v=jNQXAC9IVRw", // Direct YouTube link - ganti dengan link YouTube Anda
       views: "456K",
       date: "2024",
-      category: "Behind the Scenes",
       description: "Exclusive look at the creative process behind Aryiion's latest tracks."
     },
     {
@@ -39,7 +37,6 @@ const Videos = () => {
       youtubeUrl: "https://www.youtube.com/watch?v=M7lc1UVf-VE", // Direct YouTube link - ganti dengan link YouTube Anda
       views: "789K",
       date: "2024",
-      category: "Live Performance",
       description: "Captivating live rendition of Electronic Dreams with full visual production."
     },
     {
@@ -50,7 +47,6 @@ const Videos = () => {
       youtubeUrl: "https://www.youtube.com/watch?v=9bZkp7q19f0", // Direct YouTube link - ganti dengan link YouTube Anda
       views: "234K",
       date: "2024",
-      category: "Interview",
       description: "Deep dive into Aryiion's creative philosophy and musical journey."
     },
     {
@@ -61,7 +57,6 @@ const Videos = () => {
       youtubeUrl: "https://www.youtube.com/watch?v=kJQP7kiw5Fk", // Direct YouTube link - ganti dengan link YouTube Anda
       views: "567K",
       date: "2024",
-      category: "Visual Art",
       description: "Abstract visual journey through digital landscapes and electronic soundscapes."
     },
     {
@@ -72,7 +67,6 @@ const Videos = () => {
       youtubeUrl: "https://www.youtube.com/watch?v=fJ9rUzIMcZQ", // Direct YouTube link - ganti dengan link YouTube Anda
       views: "123K",
       date: "2024",
-      category: "Tutorial",
       description: "Step-by-step guide to creating electronic music with Aryiion's techniques."
     },
     {
@@ -83,7 +77,6 @@ const Videos = () => {
       youtubeUrl: "https://www.youtube.com/watch?v=L_jWHffIx5E", // Direct YouTube link - ganti dengan link YouTube Anda
       views: "2.1M",
       date: "2024",
-      category: "Concert",
       description: "Best moments from Aryiion's international tour performances."
     },
     {
@@ -94,17 +87,10 @@ const Videos = () => {
       youtubeUrl: "https://www.youtube.com/watch?v=YQHsXMglC9A", // Direct YouTube link - ganti dengan link YouTube Anda
       views: "345K",
       date: "2024",
-      category: "Collaboration",
       description: "Special collaboration with emerging artists in the electronic music scene."
     }
   ];
 
-  const categories = ["All", "Music Video", "Behind the Scenes", "Live Performance", "Interview", "Visual Art", "Tutorial", "Concert", "Collaboration"];
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  const filteredVideos = activeCategory === "All" 
-    ? videos 
-    : videos.filter(video => video.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-background">
@@ -123,26 +109,10 @@ const Videos = () => {
             </h1>
           </div>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-6 py-3 rounded-full border-2 transition-all duration-300 font-mono text-sm uppercase tracking-wider ${
-                  activeCategory === category
-                    ? 'border-primary bg-primary text-background'
-                    : 'border-border text-muted-foreground hover:border-primary hover:text-primary'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
 
           {/* Video Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
-            {filteredVideos.map((video, index) => (
+            {videos.map((video, index) => (
               <div
                 key={video.id}
                 className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] hover:scale-105 transform cursor-pointer relative"
@@ -219,10 +189,6 @@ const Videos = () => {
                     {video.duration}
                   </div>
                   
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4 bg-primary/90 text-background px-3 py-1 rounded-full font-mono text-xs uppercase">
-                    {video.category}
-                  </div>
                 </div>
 
                 {/* Video Info */}
@@ -326,7 +292,7 @@ const Videos = () => {
       </div>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-border py-8 mt-16">
+      <footer className="fixed bottom-0 left-0 right-0 z-10 border-t border-border py-4 bg-background">
         <div className="container mx-auto px-4 text-center">
           <div className="font-mono text-xs text-muted-foreground">
             © 2025 ARYIION. ALL RIGHTS RESERVED.
