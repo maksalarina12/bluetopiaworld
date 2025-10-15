@@ -39,8 +39,8 @@ const Shop = () => {
     {
       id: 1,
       name: "Anomaly T-Shirt Ver2",
-      price: "$7,82",
-      description: "Anomaly it's describe our life",
+      price: "$7,83",
+      description: "Anomaly it's describe our life with galaxy vibes",
       image: "/src/assets/anomalyblack2.jpg",
       hoverImage: "/src/assets/anomalywhite2.jpg",
       shopeeUrl: "https://shopee.co.id/product/1146843343/25956401270/",
@@ -49,8 +49,8 @@ const Shop = () => {
     {
       id: 2,
       name: "Anomaly T-Shirt",
-      price: "$7,82",
-      description: "Anomaly it's describe our life",
+      price: "$7.83",
+      description: "Anomaly it's describe our life with anomali faces",
       image: "/src/assets/anomalyblack.jpg",
       hoverImage: "/src/assets/anomalywhite.jpg",
       shopeeUrl: "https://shopee.co.id/product/1146843343/25855094589/",
@@ -60,7 +60,7 @@ const Shop = () => {
       id: 3,
       name: "Bluetopia Lighter",
       price: "$7,82",
-      description: "Physical CD of the Electronic Dreams EP",
+      description: "Big Lighter with skull",
       image: "/src/assets/front.png",
       hoverImage: "/src/assets/backligh.png",
       shopeeUrl: "https://shopee.co.id/aryiion-electronic-dreams-cd",
@@ -69,8 +69,8 @@ const Shop = () => {
     {
       id: 4,
       name: "BLUETOPIA MINI LIGHTER",
-      price: "$49.99",
-      description: "Comfortable hoodie with embroidered Aryiion branding",
+      price: "$3.31",
+      description: "Mini Lighter with skull",
       image: "/src/assets/korekkanan.png",
       hoverImage: "/src/assets/korekkiri.png",
       shopeeUrl: "https://shopee.co.id/aryiion-hoodie",
@@ -79,20 +79,20 @@ const Shop = () => {
     {
       id: 5,
       name: "BLUETOPIA CAP",
-      price: "$9.99",
-      description: "Complete digital collection of all Aryiion releases",
+      price: "$7.23",
+      description: "Cap with Bluetopia logo snd skull",
       image: "/src/assets/frontcap.png",
       hoverImage: "/src/assets/backcap.png",
       shopeeUrl: "https://shopee.co.id/aryiion-digital-bundle",
       status: "Digital"
     },
-    {
+    { 
       id: 6,
-      name: "Aryiion Poster Set",
-      price: "$19.99",
-      description: "Set of 3 high-quality posters featuring album artwork",
-      image: "/src/assets/logowhitedone.png",
-      hoverImage: "/src/assets/aryiion-logo.png",
+      name: "BLUETOPIA NECKLACE",
+      price: "$6.62",
+      description: "Necklace with Bluetopia logo",
+      image: "/src/assets/front11.png",
+      hoverImage: "/src/assets/back11.png",
       shopeeUrl: "https://shopee.co.id/aryiion-poster-set",
       status: "In Stock"
     }
@@ -118,14 +118,40 @@ const Shop = () => {
             </Link>
           </div>
 
-          {/* Shop Notice */}
+          {/* Shop Notice with marketplace links */}
           <Card className="bg-card/50 backdrop-blur mb-12 border-primary/20 animate-fade-in">
             <CardContent className="pt-6">
               <div className="text-center">
                 <h3 className="font-display text-xl font-bold text-primary mb-3 uppercase tracking-wider">Official Merchandise</h3>
-                <p className="text-muted-foreground font-mono text-sm">
-                  All official Aryiion merchandise is available on Shopee. Click any product below to visit our official store.
+                <p className="text-muted-foreground font-mono text-sm mb-5">
+                  Find our products on your favorite marketplaces.
                 </p>
+                <div className="flex items-center justify-center gap-4 flex-wrap">
+                  <a
+                    href="https://www.tokopedia.com/silentghoststorez"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-primary/40 hover:border-primary text-foreground hover:text-primary transition-colors duration-300 bg-background/40"
+                  >
+                    {/* Tokopedia logo (simple T glyph) */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary">
+                      <path d="M4 6h16v3h-6v9h-4V9H4V6z" fill="currentColor"/>
+                    </svg>
+                    <span className="font-display tracking-wider uppercase text-sm">Tokopedia</span>
+                  </a>
+                  <a
+                    href="https://shopee.co.id/silentghoststorez"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-primary/40 hover:border-primary text-foreground hover:text-primary transition-colors duration-300 bg-background/40"
+                  >
+                    {/* Shopee bag icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary">
+                      <path d="M7 9V7a5 5 0 0 1 10 0v2h2a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1h2zm2 0h6V7a3 3 0 0 0-6 0v2z" fill="currentColor"/>
+                    </svg>
+                    <span className="font-display tracking-wider uppercase text-sm">Shopee</span>
+                  </a>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -192,7 +218,7 @@ const Shop = () => {
             ))}
           </div>
 
-          {/* Shop Info */}
+          {/* Shop Info - keep Payment and Support only */}
           <Card className="bg-card/50 backdrop-blur border-primary/20 animate-fade-in">
             <CardHeader>
               <CardTitle className="font-display text-3xl uppercase tracking-wider text-primary">Shop Information</CardTitle>
@@ -200,27 +226,15 @@ const Shop = () => {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="group">
-                  <h3 className="font-display text-lg font-bold uppercase tracking-wider mb-3 text-foreground group-hover:text-primary transition-colors">Shipping</h3>
-                  <p className="text-muted-foreground font-mono text-sm leading-relaxed">
-                    Free shipping on orders over $50. International shipping available.
-                  </p>
-                </div>
-                <div className="group">
-                  <h3 className="font-display text-lg font-bold uppercase tracking-wider mb-3 text-foreground group-hover:text-primary transition-colors">Returns</h3>
-                  <p className="text-muted-foreground font-mono text-sm leading-relaxed">
-                    30-day return policy for all physical merchandise.
-                  </p>
-                </div>
-                <div className="group">
                   <h3 className="font-display text-lg font-bold uppercase tracking-wider mb-3 text-foreground group-hover:text-primary transition-colors">Payment</h3>
                   <p className="text-muted-foreground font-mono text-sm leading-relaxed">
-                    Secure payment through Shopee's platform.
+                    Secure payment through marketplace platforms.
                   </p>
                 </div>
                 <div className="group">
                   <h3 className="font-display text-lg font-bold uppercase tracking-wider mb-3 text-foreground group-hover:text-primary transition-colors">Support</h3>
                   <p className="text-muted-foreground font-mono text-sm leading-relaxed">
-                    Contact us through Shopee chat for any questions.
+                    Contact us via marketplace chat for any questions.
                   </p>
                 </div>
               </div>

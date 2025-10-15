@@ -15,13 +15,19 @@ const Index = () => {
 
   const journeyEras = [
     { id: 1, title: "BLUETOPIA ERA", description: "The beginning of a new chapter", year: "2025", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 2, title: "KENANGAN YANG HILANG", description: "Fragments of the past", year: "2023", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp?si=53629e57ea234389" },
-    { id: 3, title: "KAU DAN BULAN", description: "Emotions in digital form", year: "2021", spotifyUrl: "https://open.spotify.com/track/0PR7gLVNIwp1plbCFTffM0?si=f9abe2c3d2134aae" },
-    { id: 5, title: "LUPAKAN AKU", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/0XEFpf8JiQ0?si=3hY8gKrH9G8yAtRx" },
-    { id: 6, title: "LEPASKAN", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/5GsS2jzsPz7bHtP5iA5Lob?si=0bac5eb3f6814cc8" },
-    { id: 7, title: "SEANDAINYA", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 8, title: "JATUH CINTA PADAMU", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 9, title: "DARI MIMPI", description: "The inception of growth", year: "2019", spotifyUrl: "https://open.spotify.com/track/2MGUvZpXpPZ7YucifAmuFE?si=96cef3e00e1e46e9" },
+    { id: 2, title: "KENANGAN YANG HILANG", description: "Aryiiom", year: "2023", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp?si=53629e57ea234389" },
+    { id: 4, title: "EGO", description: "Aryiion, Yung Uber", year: "2022", spotifyUrl: "https://openyoutu.be/Fk8eAOfkaGg?si=NRIgsqNA1wJz8G-h" },
+    { id: 3, title: "KAU DAN BULAN", description: "Aryiion", year: "2021", spotifyUrl: "https://open.spotify.com/track/0PR7gLVNIwp1plbCFTffM0?si=f9abe2c3d2134aae" },
+    { id: 3, title: "AKU BUKAN KAMU", description: "Aryiion, Sobat Ray", year: "2021", spotifyUrl: "https://openyoutu.be/IRVuo5idp0U?si=DqQNZkw-opFCf5Eg" },
+    { id: 3, title: "PUTRI", description: "Aryiion", year: "2022", spotifyUrl: "https://open.spotify.com/track/753l5jZUQI4uW3EWaCbrLJ?si=29638035b76446ca" },
+    { id: 3, title: "KU HANYA INGIN TAU", description: "Aryiion, HEILNUAN", year: "2021", spotifyUrl: "https://openyoutu.be/CQvSdD1BJ1I?si=l38Y18LfJzSfYMls" },
+    { id: 3, title: "PENGEMBARA", description: "Aryiion", year: "2020", spotifyUrl: "https://openyoutu.be/Qv3-Xj2HB4o?si=VAnx9HFM9O1unG7F" },
+    { id: 5, title: "LUPAKAN AKU", description: "Aryiion", year: "2020", spotifyUrl: "https://openyoutu.be/0XEFpf8JiQ0?si=M97TPsz4rXPfBh6m" },
+    { id: 6, title: "LEPASKAN", description: "Aryiion, Yung Uber, Yonnyboii", year: "2019", spotifyUrl: "https://open.spotify.com/track/5GsS2jzsPz7bHtP5iA5Lob?si=0bac5eb3f6814cc8" },
+    { id: 7, title: "SEANDAINYA", description: "Aryiion", year: "2019", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 3, title: "TAK ADA YANG BERDUKA", description: "Aryiion, Sobat Ray", year: "2018", spotifyUrl: "https://openyoutu.be/MT6r1HWIAbE?si=tEH9sw2p74yojEd6" },
+    { id: 8, title: "JATUH CINTA PADAMU", description: "Aryiion", year: "2018", spotifyUrl: "https://openyoutu.be/b9dmTf507SU?si=-mSpRs2ZC2WkXE9F" },
+    { id: 9, title: "DARI MIMPI", description: "Aryiion", year: "2017", spotifyUrl: "https://openyoutu.be/y0gFGSyhrn0?si=qq30wazj9rMB7FaG" },
   ];
 
   const scrollToTracks = () => {

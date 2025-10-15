@@ -54,7 +54,55 @@ const Music = () => {
       cover: "/src/assets/aryiion-logo.png",
       audio: "https://open.spotify.com/embed/track/5GsS2jzsPz7bHtP5iA5Lob"
     },
-    
+  ];
+
+  // Song list for external links (not part of the main player queue)
+  const songList = [
+    {
+      id: 1,
+      title: "CINDERELLA",
+      artist: "Aryiion",
+      audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp?utm_source=generator",
+    },
+    {
+      id: 2,
+      title: "I WANT IT ALL",
+      artist: "Aryiion Ft. FADHIL",
+      audio: "",
+    },
+    {
+      id: 3,
+      title: "TEDUH",
+      artist: "Aryiion",
+      audio: "",
+    },
+    {
+      id: 4,
+      title: "BEHIND",
+      artist: "Aryiion Ft. Lil-Khai, Yung Uber",
+      audio: "https://open.spotify.com/embed/track/0XEFpf8JiQ0",
+    },
+    {
+      id: 5,
+      title: "PERCAYA",
+      artist: "Aryiion",
+      audio: "https://open.spotify.com/embed/track/5GsS2jzsPz7bHtP5iA5Lob",
+    },
+    // From Index.tsx
+    { id: 6, title: "BLUETOPIA ERA", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 7, title: "KENANGAN YANG HILANG", artist: "Aryiiom", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 8, title: "EGO", artist: "Aryiion, Yung Uber", audio: "" },
+    { id: 9, title: "KAU DAN BULAN", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/0PR7gLVNIwp1plbCFTffM0" },
+    { id: 10, title: "AKU BUKAN KAMU", artist: "Aryiion, Sobat Ray", audio: "" },
+    { id: 11, title: "PUTRI", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/753l5jZUQI4uW3EWaCbrLJ" },
+    { id: 12, title: "KU HANYA INGIN TAU", artist: "Aryiion, HEILNUAN", audio: "" },
+    { id: 13, title: "PENGEMBARA", artist: "Aryiion", audio: "" },
+    { id: 14, title: "LUPAKAN AKU", artist: "Aryiion", audio: "" },
+    { id: 15, title: "LEPASKAN", artist: "Aryiion, Yung Uber, Yonnyboii", audio: "https://open.spotify.com/embed/track/5GsS2jzsPz7bHtP5iA5Lob" },
+    { id: 16, title: "SEANDAINYA", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 17, title: "TAK ADA YANG BERDUKA", artist: "Aryiion, Sobat Ray", audio: "" },
+    { id: 18, title: "JATUH CINTA PADAMU", artist: "Aryiion", audio: "" },
+    { id: 19, title: "DARI MIMPI", artist: "Aryiion", audio: "" },
   ];
 
   // Audio Visualizer
@@ -264,6 +312,39 @@ const Music = () => {
                   allow="encrypted-media"
                   className="rounded-lg"
                 ></iframe>
+              </div>
+            </div>
+          </FadeContent>
+          {/* Separate Track List card */}
+          <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0} delay={700}>
+            <div className="bg-card border border-primary/30 rounded-2xl p-8 mt-8">
+              <h3 className="font-display text-2xl font-bold uppercase tracking-wider text-center mb-6">
+                Track List
+              </h3>
+              <div className="max-w-2xl mx-auto space-y-3">
+                {songList
+                  .filter((t) => t.audio && t.audio.includes('open.spotify.com'))
+                  .map((t) => {
+                    const directUrl = t.audio.replace('/embed', '').split('?')[0]
+                    return (
+                      <a
+                        key={t.id}
+                        href={directUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block bg-background/40 hover:bg-background/60 border border-primary/30 hover:border-primary/60 rounded-lg px-4 py-3 transition-all duration-300 group"
+                      >
+                        <div className="flex items-center justify-between gap-4">
+                          <span className="font-display text-sm md:text-base font-semibold tracking-wider group-hover:text-primary">
+                            {t.artist} - {t.title}
+                          </span>
+                          <span className="font-mono text-xs text-muted-foreground group-hover:text-primary">
+                            Open →
+                          </span>
+                        </div>
+                      </a>
+                    )
+                  })}
               </div>
             </div>
           </FadeContent>
