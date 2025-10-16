@@ -59,50 +59,50 @@ const Music = () => {
   // Song list for external links (not part of the main player queue)
   const songList = [
     {
-      id: 1,
+      id: 6, 
       title: "CINDERELLA",
       artist: "Aryiion",
       audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp?utm_source=generator",
     },
     {
-      id: 2,
+      id: 7,
       title: "I WANT IT ALL",
       artist: "Aryiion Ft. FADHIL",
       audio: "",
     },
     {
-      id: 3,
+      id: 8,
       title: "TEDUH",
       artist: "Aryiion",
       audio: "",
     },
     {
-      id: 4,
+      id: 9,
       title: "BEHIND",
       artist: "Aryiion Ft. Lil-Khai, Yung Uber",
       audio: "https://open.spotify.com/embed/track/0XEFpf8JiQ0",
     },
     {
-      id: 5,
+      id: 10,
       title: "PERCAYA",
       artist: "Aryiion",
       audio: "https://open.spotify.com/embed/track/5GsS2jzsPz7bHtP5iA5Lob",
     },
     // From Index.tsx
-    { id: 6, title: "BLUETOPIA ERA", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 7, title: "KENANGAN YANG HILANG", artist: "Aryiiom", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 8, title: "EGO", artist: "Aryiion, Yung Uber", audio: "" },
-    { id: 9, title: "KAU DAN BULAN", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/0PR7gLVNIwp1plbCFTffM0" },
-    { id: 10, title: "AKU BUKAN KAMU", artist: "Aryiion, Sobat Ray", audio: "" },
-    { id: 11, title: "PUTRI", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/753l5jZUQI4uW3EWaCbrLJ" },
-    { id: 12, title: "KU HANYA INGIN TAU", artist: "Aryiion, HEILNUAN", audio: "" },
-    { id: 13, title: "PENGEMBARA", artist: "Aryiion", audio: "" },
-    { id: 14, title: "LUPAKAN AKU", artist: "Aryiion", audio: "" },
-    { id: 15, title: "LEPASKAN", artist: "Aryiion, Yung Uber, Yonnyboii", audio: "https://open.spotify.com/embed/track/5GsS2jzsPz7bHtP5iA5Lob" },
-    { id: 16, title: "SEANDAINYA", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 17, title: "TAK ADA YANG BERDUKA", artist: "Aryiion, Sobat Ray", audio: "" },
-    { id: 18, title: "JATUH CINTA PADAMU", artist: "Aryiion", audio: "" },
-    { id: 19, title: "DARI MIMPI", artist: "Aryiion", audio: "" },
+    { id: 11, title: "BLUETOPIA ERA", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 12, title: "KENANGAN YANG HILANG", artist: "Aryiiom", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 13, title: "EGO", artist: "Aryiion, Yung Uber", audio: "" },
+    { id: 14, title: "KAU DAN BULAN", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/0PR7gLVNIwp1plbCFTffM0" },
+    { id: 15, title: "AKU BUKAN KAMU", artist: "Aryiion, Sobat Ray", audio: "" },
+    { id: 16, title: "PUTRI", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/753l5jZUQI4uW3EWaCbrLJ" },
+    { id: 17, title: "KU HANYA INGIN TAU", artist: "Aryiion, HEILNUAN", audio: "" },
+    { id: 18, title: "PENGEMBARA", artist: "Aryiion", audio: "" },
+    { id: 19, title: "LUPAKAN AKU", artist: "Aryiion", audio: "" },
+    { id: 20, title: "LEPASKAN", artist: "Aryiion, Yung Uber, Yonnyboii", audio: "https://open.spotify.com/embed/track/5GsS2jzsPz7bHtP5iA5Lob" },
+    { id: 21, title: "SEANDAINYA", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 22, title: "TAK ADA YANG BERDUKA", artist: "Aryiion, Sobat Ray", audio: "" },
+    { id: 23, title: "JATUH CINTA PADAMU", artist: "Aryiion", audio: "" },
+    { id: 24, title: "DARI MIMPI", artist: "Aryiion", audio: "" },
   ];
 
   // Audio Visualizer
@@ -256,7 +256,7 @@ const Music = () => {
                 <div className="space-y-4">
                   {tracks.map((track, index) => (
                     <div
-                      key={track.id}
+                      key={`player-${track.id}`}
                       className={`group bg-card border rounded-lg p-4 cursor-pointer transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(34,197,94,0.2)] ${
                         index === currentTrack 
                           ? 'border-primary bg-primary/10' 
@@ -322,32 +322,51 @@ const Music = () => {
                 Track List
               </h3>
               <div className="max-w-2xl mx-auto space-y-3">
-                {songList
-                  .filter((t) => t.audio && t.audio.includes('open.spotify.com'))
+                {[...songList]
+                  .sort((a, b) => a.id - b.id)
                   .map((t) => {
-                    const directUrl = t.audio.replace('/embed', '').split('?')[0]
+                    const hasSpotify = Boolean(t.audio && t.audio.includes('open.spotify.com'))
+                    const directUrl = hasSpotify ? t.audio.replace('/embed', '').split('?')[0] : ''
+                    if (hasSpotify) {
+                      return (
+                        <a
+                          key={`song-${t.id}`}
+                          href={directUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block bg-background/40 hover:bg-background/60 border border-primary/30 hover:border-primary/60 rounded-lg px-4 py-3 transition-all duration-300 group"
+                        >
+                          <div className="flex items-center justify-between gap-4">
+                            <span className="font-display text-sm md:text-base font-semibold tracking-wider group-hover:text-primary">
+                              {t.artist} - {t.title}
+                            </span>
+                            <span className="font-mono text-xs text-muted-foreground group-hover:text-primary">
+                              Open →
+                            </span>
+                          </div>
+                        </a>
+                      )
+                    }
                     return (
-                      <a
-                        key={t.id}
-                        href={directUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block bg-background/40 hover:bg-background/60 border border-primary/30 hover:border-primary/60 rounded-lg px-4 py-3 transition-all duration-300 group"
+                      <div
+                        key={`song-${t.id}`}
+                        className="block bg-background/40 border border-primary/30 rounded-lg px-4 py-3 opacity-70 cursor-not-allowed"
+                        aria-disabled={true}
                       >
                         <div className="flex items-center justify-between gap-4">
-                          <span className="font-display text-sm md:text-base font-semibold tracking-wider group-hover:text-primary">
+                          <span className="font-display text-sm md:text-base font-semibold tracking-wider">
                             {t.artist} - {t.title}
                           </span>
-                          <span className="font-mono text-xs text-muted-foreground group-hover:text-primary">
-                            Open →
+                          <span className="font-mono text-xs text-muted-foreground">
+                            Coming soon
                           </span>
                         </div>
-                      </a>
+                      </div>
                     )
                   })}
               </div>
             </div>
-          </FadeContent>
+          </FadeContent>  
         </div>
       </div>
 
