@@ -12,6 +12,7 @@ import Gallery from "./pages/Gallery";
 import Bio from "./pages/Bio";
 import LiveSets from "./pages/LiveSets";
 import NotFound from "./pages/NotFound";
+import AllSongs from "./pages/AllSongs";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/shop" element={<Shop />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/music" element={<Music />} />
+          <Route path="/all-songs" element={<AllSongs />} />
           <Route path="/videos" element={<Videos />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/bio" element={<Bio />} />

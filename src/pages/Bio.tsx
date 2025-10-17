@@ -5,12 +5,18 @@ import HudOverlay from "@/components/HudOverlay";
 import BlurText from "@/components/BlurText";
 
 const Bio = () => {
-  const [activeSection, setActiveSection] = useState("story");
-  const [hoveredTimeline, setHoveredTimeline] = useState<number | null>(null);
+  const [activeSection] = useState("story");
 
   const handleAnimationComplete = () => {
     console.log('Blur text animation completed!');
   };
+
+  const animationFrom = { filter: 'blur(10px)', opacity: 0, y: -50 } as any;
+  const animationTo = [
+    { filter: 'blur(5px)', opacity: 0.5, y: 5 },
+    { filter: 'blur(0px)', opacity: 1, y: 0 },
+  ] as any;
+  const noop = () => {};
 
   const journeyEras = [
     { id: 1, title: "BLUETOPIA ERA", description: "The beginning of a new chapter", year: "2025", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
@@ -25,11 +31,11 @@ const Bio = () => {
 
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
       <HudOverlay />
       
-      <div className="pt-32 px-4 py-12">
+      <div className="pt-32 px-4 py-12 flex-1">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16 animate-fade-in">
@@ -39,6 +45,9 @@ const Bio = () => {
                 delay={100}
                 animateBy="words"
                 direction="top"
+                animationFrom={animationFrom}
+                animationTo={animationTo}
+                onAnimationComplete={noop}
                 className="font-mono text-sm tracking-widest text-primary uppercase mb-4 animate-pulse-glow"
               />
             </div>
@@ -49,36 +58,14 @@ const Bio = () => {
                 animateBy="words"
                 direction="top"
                 onAnimationComplete={handleAnimationComplete}
+                animationFrom={animationFrom}
+                animationTo={animationTo}
                 className="font-display text-6xl md:text-8xl font-bold uppercase tracking-wider mb-4"
               />
             </div>
           </div>
 
-          {/* Navigation Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
-            {[
-              { id: "story", label: "Story" },
-              { id: "timeline", label: "Timeline" }
-            ].map((tab, index) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveSection(tab.id)}
-                className={`px-8 py-4 rounded-full border-2 transition-all duration-300 font-mono text-sm uppercase tracking-wider ${
-                  activeSection === tab.id
-                    ? 'border-primary bg-primary text-background'
-                    : 'border-border text-muted-foreground hover:border-primary hover:text-primary'
-                }`}
-              >
-                <BlurText
-                  text={tab.label}
-                  delay={100 + (index * 100)}
-                  animateBy="words"
-                  direction="top"
-                  className="inline"
-                />
-              </button>
-            ))}
-          </div>
+          {/* Navigation Tabs removed - show bio only */}
 
           {/* Story Section */}
           {activeSection === "story" && (
@@ -98,6 +85,8 @@ const Bio = () => {
                     animateBy="words"
                     direction="top"
                     onAnimationComplete={handleAnimationComplete}
+                    animationFrom={animationFrom}
+                    animationTo={animationTo}
                     className="font-display text-4xl font-bold uppercase tracking-wider mb-6"
                   />
                 </div>
@@ -106,6 +95,9 @@ const Bio = () => {
                   delay={200}
                   animateBy="words"
                   direction="top"
+                  animationFrom={animationFrom}
+                  animationTo={animationTo}
+                  onAnimationComplete={noop}
                   className="font-mono text-lg text-muted-foreground leading-relaxed max-w-4xl mx-auto"
                 />
               </div>
@@ -118,6 +110,8 @@ const Bio = () => {
                   animateBy="words"
                   direction="top"
                   onAnimationComplete={handleAnimationComplete}
+                  animationFrom={animationFrom}
+                  animationTo={animationTo}
                   className="font-display text-2xl font-bold uppercase tracking-wider mb-4 group-hover:text-primary transition-colors"
                 />
                   <BlurText
@@ -128,6 +122,9 @@ const Bio = () => {
                     delay={150}
                     animateBy="words"
                     direction="top"
+                    animationFrom={animationFrom}
+                    animationTo={animationTo}
+                    onAnimationComplete={noop}
                     className="font-mono text-sm text-muted-foreground leading-relaxed"
                   />
                 </div>
@@ -139,6 +136,8 @@ const Bio = () => {
                   animateBy="words"
                   direction="top"
                   onAnimationComplete={handleAnimationComplete}
+                  animationFrom={animationFrom}
+                  animationTo={animationTo}
                   className="font-display text-2xl font-bold uppercase tracking-wider mb-4 group-hover:text-primary transition-colors"
                 />
                   <BlurText
@@ -149,6 +148,9 @@ const Bio = () => {
                     delay={250}
                     animateBy="words"
                     direction="top"
+                    animationFrom={animationFrom}
+                    animationTo={animationTo}
+                    onAnimationComplete={noop}
                     className="font-mono text-sm text-muted-foreground leading-relaxed"
                   />
                 </div>
@@ -156,83 +158,13 @@ const Bio = () => {
             </div>
           )}
 
-          {/* Timeline Section */}
-          {activeSection === "timeline" && (
-            <div className="space-y-8">
-              <div className="text-center mb-12">
-                <BlurText
-                  text="Musical Journey"
-                  delay={100}
-                  animateBy="words"
-                  direction="top"
-                  onAnimationComplete={handleAnimationComplete}
-                  className="font-display text-4xl font-bold uppercase tracking-wider mb-4"
-                />
-                <BlurText
-                  text="A timeline of key moments in Aryiion's artistic evolution"
-                  delay={150}
-                  animateBy="words"
-                  direction="top"
-                  className="font-mono text-muted-foreground"
-                />
-              </div>
-
-              <div className="relative">
-                {/* Timeline Line */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary opacity-30"></div>
-                
-                {journeyEras.map((era, index) => (
-                  <div
-                    key={era.id}
-                    className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                  >
-                    {/* Timeline dot */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-primary rounded-full border-2 border-background z-10 animate-pulse-glow"></div>
-                    
-                    {/* Content card */}
-                    <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                      <div className="bg-card border border-border rounded-lg p-6 hover:border-primary transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] group relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div className="relative z-10">
-                          <div className="flex items-center gap-3 mb-3">
-                            <span className="font-mono text-sm text-primary font-bold group-hover:scale-110 transition-transform duration-300">{era.year}</span>
-                            <div className="flex-1 h-px bg-primary opacity-30 group-hover:opacity-100 transition-opacity duration-300"></div>
-                          </div>
-                          <a 
-                            href={era.spotifyUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="font-display text-xl font-bold uppercase tracking-wider text-foreground group-hover:text-primary transition-all duration-300 mb-2 block hover:text-primary cursor-pointer hover:scale-105 transform"
-                          >
-                            <BlurText
-                              text={era.title}
-                              delay={100 + (index * 50)}
-                              animateBy="words"
-                              direction="top"
-                              className="inline"
-                            />
-                          </a>
-                          <BlurText
-                            text={era.description}
-                            delay={150 + (index * 50)}
-                            animateBy="words"
-                            direction="top"
-                            className="text-muted-foreground text-sm font-mono group-hover:text-foreground transition-colors duration-300"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          {/* Timeline Section removed */}
 
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-border py-8 mt-16">
+      <footer className="relative z-10 border-t border-border py-8 mt-auto">
         <div className="container mx-auto px-4">
           <div className="flex justify-center">
             <BlurText
@@ -241,6 +173,8 @@ const Bio = () => {
               animateBy="words"
               direction="top"
               onAnimationComplete={handleAnimationComplete}
+              animationFrom={animationFrom}
+              animationTo={animationTo}
               className="font-mono text-xs text-muted-foreground text-center"
             />
           </div>

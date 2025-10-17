@@ -11,86 +11,62 @@ const Gallery = () => {
     {
       id: 1,
       src: "/src/assets/foto1.png",
-      title: "-",
-      description: "-",
-      date: "2025"
+
     },
     {
       id: 2,
       src: "/src/assets/foto2.png",
-      title: "Concert Performance",
-      description: "Electrifying performance at the main stage",
-      date: "2024"
+
     },
     {
       id: 3,
       src: "/src/assets/foto3.png",
-      title: "Album Artwork",
-      description: "Visual representation of the musical journey",
-      date: "2025"
+
     },
     {
       id: 4,
       src: "/src/assets/foto4.png",
-      title: "Backstage Moments",
-      description: "Candid moments before the show",
-      date: "2024"
+
     },
     {
       id: 5,
       src: "/src/assets/foto5.png",
-      title: "Visual Effects",
-      description: "Stunning visual effects during live performance",
-      date: "2024"
+
     },
     {
       id: 6,
       src: "/src/assets/foto6.png",
-      title: "Fan Interaction",
-      description: "Connecting with the audience",
-      date: "2024"
+
     },
     {
       id: 7,
       src: "/src/assets/foto7.png",
-      title: "Equipment Setup",
-      description: "The technical side of the performance",
-      date: "2024"
+
     },
     {
       id: 8,
       src: "/src/assets/bluetopia.jpg",
-      title: "Bluetopia Album",
-      description: "Immersive stage design and lighting",
-      date: "2024"
+
     },
     {
       id: 9,
       src: "/src/assets/aryiion-logo.png",
-      title: "Collaboration",
-      description: "Working with other artists",
-      date: "2024"
+
     },
     {
       id: 10,
       src: "/src/assets/aryiion-logo.png",
-      title: "Recording Process",
-      description: "The creative process in the studio",
-      date: "2024"
+
     },
     {
       id: 11,
       src: "/src/assets/aryiion-logo.png",
-      title: "Light Show",
-      description: "Mesmerizing light show synchronization",
-      date: "2024"
+
     },
     {
       id: 12,
       src: "/src/assets/aryiion-logo.png",
-      title: "Crowd Energy",
-      description: "The energy of the live audience",
-      date: "2024"
+
     }
   ];
 
@@ -114,7 +90,7 @@ const Gallery = () => {
 
 
           {/* Circular Gallery */}
-          <div style={{ height: '600px', position: 'relative' }}>
+          <div style={{ height: '900px', position: 'relative' }}>
             <CircularGallery 
               bend={3} 
               textColor="#ffffff" 
@@ -122,7 +98,7 @@ const Gallery = () => {
               scrollEase={0.02}
               items={images.map(img => ({
                 image: img.src,
-                text: img.title
+                text: ""
               }))}
             />
           </div>
@@ -167,25 +143,12 @@ const Gallery = () => {
                   <div className="aspect-video bg-black rounded-2xl overflow-hidden">
                     <img 
                       src={images.find(img => img.id === selectedImage)?.src} 
-                      alt={images.find(img => img.id === selectedImage)?.title}
+                      alt="gallery"
                       className="w-full h-full object-cover"
                     />
                   </div>
                   
-                  {/* Image Info */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8">
-                    <h3 className="font-display text-2xl font-bold uppercase tracking-wider text-white mb-2">
-                      {images.find(img => img.id === selectedImage)?.title}
-                    </h3>
-                    <p className="font-mono text-sm text-white/80 mb-2">
-                      {images.find(img => img.id === selectedImage)?.description}
-                    </p>
-                    <div className="flex items-center gap-4 text-xs text-white/60">
-                      <span className="font-mono">
-                        {images.find(img => img.id === selectedImage)?.date}
-                      </span>
-                    </div>
-                  </div>
+                  {/* Hide text overlay */}
                 </div>
               </div>
             </div>

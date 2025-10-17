@@ -6,11 +6,11 @@ import { Music, Video, Image as ImageIcon, Headphones, User } from "lucide-react
 const Explore = () => {
 
   const categories = [
-    { icon: Music, label: "Music", count: "12 Tracks", link: "/music" },
-    { icon: Video, label: "Videos", count: "8 Videos", link: "/videos" },
-    { icon: ImageIcon, label: "Gallery", count: "24 Images", link: "/gallery" },
-    { icon: User, label: "Bio", count: "Artist Story", link: "/bio" },
-    { icon: Headphones, label: "Live Sets", count: "5 Mixes", link: "/live-sets" },
+    { icon: Music, label: "Music", link: "/music" },
+    { icon: Video, label: "Videos", link: "/videos" },
+    { icon: ImageIcon, label: "Gallery", link: "/gallery" },
+    { icon: User, label: "Bio", link: "/bio" },
+    { icon: Headphones, label: "Live Sets", link: "/live-sets" },
   ];
 
   return (
@@ -33,12 +33,7 @@ const Explore = () => {
             <p className="font-mono text-muted-foreground max-w-2xl mx-auto mb-8">
               Dive into the world of Aryiion. Experience the music, visuals, and stories that shape our universe.
             </p>
-            <Link 
-              to="/" 
-              className="inline-block font-mono text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              ← Back to Home
-            </Link>
+            {/* Back to Home removed */}
           </div>
 
           {/* Categories Grid */}

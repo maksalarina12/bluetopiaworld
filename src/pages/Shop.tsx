@@ -113,9 +113,7 @@ const Shop = () => {
             <h1 className="font-display text-6xl md:text-8xl font-bold uppercase tracking-wider mb-4">
               Shop
             </h1>
-            <Link to="/" className="inline-block mt-4 font-mono text-sm text-muted-foreground hover:text-primary transition-colors">
-              ← Back to Home
-            </Link>
+            {/* Back to Home removed */}
           </div>
 
           {/* Shop Notice with marketplace links */}

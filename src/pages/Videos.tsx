@@ -7,88 +7,162 @@ const Videos = () => {
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const getYouTubeEmbedUrl = (url: string): string => {
+    try {
+      // Handle youtu.be short links, watch?v=, and full URLs with params
+      const u = new URL(url);
+      if (u.hostname.includes('youtu.be')) {
+        const id = u.pathname.replace('/', '');
+        return `https://www.youtube.com/embed/${id}`;
+      }
+      if (u.searchParams.get('v')) {
+        const id = u.searchParams.get('v') as string;
+        return `https://www.youtube.com/embed/${id}`;
+      }
+      // Already an embed or other format
+      if (u.pathname.startsWith('/embed/')) return url;
+      // Fallback to original
+      return url;
+    } catch {
+      return url;
+    }
+  };
+
 
   const videos = [
     {
       id: 1,
-      title: "Kenangan Yang Hilang - Slowed Ver",
-      duration: "3:45",
+      title: "Aryiion - CINDERELLA",
       thumbnail: "/src/assets/kenanganhilangslow.jpg",
-      youtubeUrl: "https://youtu.be/ez8v-GV-_g0?si=WQTeM7b4G1ZIZTVr", // Direct YouTube link - ganti dengan link YouTube Anda
-      views: "1.2M",
-      date: "2025",
-      description: "The official music video for Bluetopia, featuring stunning visuals and atmospheric cinematography."
+      youtubeUrl: "https://youtu.be/5IiAqc-RdUA", // Direct YouTube link - ganti dengan link YouTube Anda
     },
     {
       id: 2,
-      title: "Behind the Scenes - Studio Session",
-      duration: "8:32",
+      title: "Aryiion - I WANT IT ALL Ft. FADHIL",
       thumbnail: "/src/assets/aryiion-logo.png",
-      youtubeUrl: "https://www.youtube.com/watch?v=jNQXAC9IVRw", // Direct YouTube link - ganti dengan link YouTube Anda
-      views: "456K",
-      date: "2024",
-      description: "Exclusive look at the creative process behind Aryiion's latest tracks."
+      youtubeUrl: "https://youtu.be/4ZVOQNcFNzI", // Direct YouTube link - ganti dengan lin
     },
     {
       id: 3,
-      title: "Live Performance - Electronic Dreams",
-      duration: "12:15",
+      title: "Aryiion - CINDERELLA",
       thumbnail: "/src/assets/aryiion-logo.png",
-      youtubeUrl: "https://www.youtube.com/watch?v=M7lc1UVf-VE", // Direct YouTube link - ganti dengan link YouTube Anda
-      views: "789K",
-      date: "2024",
-      description: "Captivating live rendition of Electronic Dreams with full visual production."
+      youtubeUrl: "https://youtu.be/CZvI_0L7MmA", // Direct YouTube link - ganti dengan link YouT
     },
     {
       id: 4,
-      title: "Interview - The Creative Process",
-      duration: "15:42",
+      title: "Aryiion - BEHIND Ft. Lil-Khai, Yung Uber",
       thumbnail: "/src/assets/aryiion-logo.png",
-      youtubeUrl: "https://www.youtube.com/watch?v=9bZkp7q19f0", // Direct YouTube link - ganti dengan link YouTube Anda
-      views: "234K",
-      date: "2024",
-      description: "Deep dive into Aryiion's creative philosophy and musical journey."
+      youtubeUrl: "https://youtu.be/f0LBtzOVZWo", // Direct YouTube link - ganti dengan link YouTube Anda
     },
     {
       id: 5,
-      title: "Visual Art - Digital Dreams",
-      duration: "5:18",
+      title: "Aryiion - PERCAYA",
       thumbnail: "/src/assets/aryiion-logo.png",
-      youtubeUrl: "https://www.youtube.com/watch?v=kJQP7kiw5Fk", // Direct YouTube link - ganti dengan link YouTube Anda
-      views: "567K",
-      date: "2024",
-      description: "Abstract visual journey through digital landscapes and electronic soundscapes."
+      youtubeUrl: "https://youtu.be/IpSUPF_PDj4", // Direct YouTube link - ganti dengan link YouTub
     },
     {
       id: 6,
-      title: "Tutorial - Music Production",
-      duration: "22:30",
+      title: "Aryiion - Kenangan Yang Hilang (Slowed Version)",
       thumbnail: "/src/assets/aryiion-logo.png",
-      youtubeUrl: "https://www.youtube.com/watch?v=fJ9rUzIMcZQ", // Direct YouTube link - ganti dengan link YouTube Anda
-      views: "123K",
-      date: "2024",
-      description: "Step-by-step guide to creating electronic music with Aryiion's techniques."
+      youtubeUrl: "https://youtu.be/ez8v-GV-_g0", // Direct YouTube link - ganti dengan link YouTube Anda
     },
     {
       id: 7,
-      title: "Concert Highlights - World Tour",
-      duration: "18:45",
+      title: "Aryiion - Kau Dan Bulan (Speed Up Ver)",
       thumbnail: "/src/assets/aryiion-logo.png",
-      youtubeUrl: "https://www.youtube.com/watch?v=L_jWHffIx5E", // Direct YouTube link - ganti dengan link YouTube Anda
-      views: "2.1M",
-      date: "2024",
-      description: "Best moments from Aryiion's international tour performances."
+      youtubeUrl: "https://youtu.be/V4NP82WJDdE?si=5v1cmxyZMCDT5uQI", // Direct YouTube link - ganti dengan link YouTube Anda
+
     },
     {
       id: 8,
-      title: "Collaboration - Artist Feature",
-      duration: "6:52",
+      title: "Aryiion - Kenangan Yang Hilang (Music Video)",
       thumbnail: "/src/assets/aryiion-logo.png",
-      youtubeUrl: "https://www.youtube.com/watch?v=YQHsXMglC9A", // Direct YouTube link - ganti dengan link YouTube Anda
-      views: "345K",
-      date: "2024",
-      description: "Special collaboration with emerging artists in the electronic music scene."
-    }
+      youtubeUrl: "https://youtu.be/xEtDFvRf-vQ?si=2WZY7ivNlUsODwzp", // Direct YouTube link - ganti dengan link YouTube Anda
+    },
+    {
+      id: 9,
+      title: "Aryiion - Ego Ft. Yung Uber (Official Lyrics Video)",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/Fk8eAOfkaGg?si=G8rczdogb59jjqJi", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
+    {
+      id: 10,
+      title: "Aryiion - AKU BUKAN KAMU Ft. Sobat Ray",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/IRVuo5idp0U?si=ATBe2A1WFgHery8U", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
+    {
+      id: 11,
+      title: "Aryiion - Kau Dan Bulan (Official Music Video)",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/yWM57Ky_3RQ?si=RSd-sEGzDMu7TDOw", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
+    {
+      id: 12,
+      title: "Aryiion - Seandainya (Official Lyric Video) (Prod By Giant Beat)",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/0Ljf4b6FuSw?si=6GLgOlEEb1f-joid", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
+    {
+      id: 13,
+      title: "Aryiion - Jatuh cinta padamu (audio)",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/b9dmTf507SU?si=umETy4bpNV-OC32s", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
+    {
+      id: 14,
+      title: "Aryiion - Dari mimpi (audio)",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/y0gFGSyhrn0", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
+    {
+      id: 15,
+      title: "HEILNUAN - Ku hanya ingin tau Ft. Aryiion (Official Lyric Video)(Prod RX808)",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/CQvSdD1BJ1I", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
+    {
+      id: 16,
+      title: "Aryiion - Putri Ft. pink (Official Lyric Video)",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/3pY1GVy6OGU", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
+    {
+      id: 17,
+      title: "Aryiion - Pengembara [Official Music Video]",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/Qv3-Xj2HB4o", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
+    {
+      id: 18,
+      title: "Aryiion - Lupakan Aku {Official Lyrics Video}(PROD BEATS BY CON)",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/0XEFpf8JiQ0", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
+    {
+      id: 19,
+      title: "Aryiion - lepaskan Ft Yung Uber (official lyric video)(PROD BEATS BY CON)",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/bbWTk4Z54h0", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
+    {
+      id: 20,
+      title: "Sobat Ray - Tak Ada Yang Berduka ft. Aryiion ( PROD BY BOYFIFTY )",
+      thumbnail: "/src/assets/aryiion-logo.png",
+      youtubeUrl: "https://youtu.be/MT6r1HWIAbE", // Direct YouTube link - ganti dengan link YouTube Anda
+
+    },
   ];
 
 
@@ -111,84 +185,26 @@ const Videos = () => {
 
 
           {/* Video Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10 mb-16">
             {videos.map((video, index) => (
               <div
                 key={video.id}
-                className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] hover:scale-105 transform cursor-pointer relative"
+                className="group bg-card border-2 border-primary/40 rounded-2xl overflow-hidden hover:border-primary transition-all duration-500 hover:shadow-[0_0_40px_rgba(34,197,94,0.35)] hover:scale-[1.02] transform relative"
                 style={{ animationDelay: `${index * 100}ms` }}
-                onClick={() => setSelectedVideo(video.id)}
               >
-                {/* Video Thumbnail */}
-                <div className="relative aspect-video bg-gradient-to-br from-primary/20 to-primary/5 overflow-hidden">
-                  <img 
-                    src={video.thumbnail} 
-                    alt={video.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-primary/80 rounded-full flex items-center justify-center text-2xl hover:scale-110 transition-transform duration-300">
-                      ▶
-                    </div>
-                  </div>
-                  
-                  {/* YouTube Play Button Overlay */}
-                  <div className="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs font-mono uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    YouTube
-                  </div>
-                  
-                  {/* Thumbnail Quality Indicator */}
-                  <div className="absolute top-4 left-4 bg-black/60 text-white px-2 py-1 rounded text-xs font-mono opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    HD
-                  </div>
-                  
-                  {/* YouTube Logo */}
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <svg className="w-6 h-6 text-red-600" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                  </div>
-                  
-                  {/* Hover Preview Tooltip */}
-                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50">
-                    <div className="bg-black/90 text-white p-3 rounded-lg shadow-2xl max-w-xs">
-                      <div className="text-center">
-                        <p className="font-mono text-xs text-primary mb-1">YouTube Preview</p>
-                        <p className="font-display text-sm font-bold uppercase tracking-wider line-clamp-2">
-                          {video.title}
-                        </p>
-                        <p className="font-mono text-xs text-muted-foreground mt-1">
-                          Click to watch embedded or open on YouTube
-                        </p>
-                      </div>
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90"></div>
-                    </div>
-                  </div>
-                  
-                  {/* Large Preview on Hover */}
-                  <div className="absolute -top-4 -left-4 w-80 h-45 bg-black/95 rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50 overflow-hidden">
-                    <img 
-                      src={video.thumbnail} 
-                      alt={video.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mb-2 mx-auto">
-                          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z"/>
-                          </svg>
-                        </div>
-                        <p className="font-mono text-xs">Video Preview</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Duration Badge */}
-                  <div className="absolute bottom-4 right-4 bg-black/80 text-white px-2 py-1 rounded font-mono text-xs">
-                    {video.duration}
-                  </div>
-                  
+                {/* Inline YouTube Embed (like AllSongs) */}
+                <div className="relative aspect-video bg-black overflow-hidden">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={getYouTubeEmbedUrl(video.youtubeUrl)}
+                    title={`${video.title} - YouTube`}
+                    frameBorder={0}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
                 </div>
 
                 {/* Video Info */}
@@ -197,14 +213,7 @@ const Videos = () => {
                     {video.title}
                   </h3>
                   
-                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-3">
-                    <span className="font-mono">{video.views} views</span>
-                    <span className="font-mono">{video.date}</span>
-                  </div>
-                  
-                  <p className="font-mono text-xs text-muted-foreground line-clamp-2 mb-4">
-                    {video.description}
-                  </p>
+                  <div className="h-2"></div>
                   
                   {/* YouTube Direct Link Button */}
                   <a
@@ -225,68 +234,7 @@ const Videos = () => {
           </div>
 
           {/* Video Modal */}
-          {selectedVideo && (
-            <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-              <div className="bg-card border border-primary rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-                <div className="flex justify-between items-center mb-6">
-                  <h3 className="font-display text-2xl font-bold uppercase tracking-wider">
-                    {videos.find(v => v.id === selectedVideo)?.title}
-                  </h3>
-                  <button
-                    onClick={() => setSelectedVideo(null)}
-                    className="w-8 h-8 rounded-full border border-primary text-primary hover:bg-primary hover:text-background transition-all duration-300 flex items-center justify-center"
-                  >
-                    ×
-                  </button>
-                </div>
-                
-                <div className="aspect-video bg-black rounded-lg mb-6 flex items-center justify-center">
-                  <div className="text-center">
-                    <img 
-                      src={videos.find(v => v.id === selectedVideo)?.thumbnail} 
-                      alt={videos.find(v => v.id === selectedVideo)?.title}
-                      className="w-full h-full object-cover rounded-lg mb-4"
-                    />
-                    <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mb-4 mx-auto">
-                      <span className="text-4xl">🎬</span>
-                    </div>
-                    <p className="font-mono text-sm text-muted-foreground mb-4">
-                      Video player would be embedded here
-                    </p>
-                    <a
-                      href={videos.find(v => v.id === selectedVideo)?.youtubeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary text-primary hover:text-primary px-6 py-3 rounded-lg font-mono text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
-                    >
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                      </svg>
-                      Watch on YouTube
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4 text-sm">
-                    <span className="font-mono text-muted-foreground">
-                      {videos.find(v => v.id === selectedVideo)?.views} views
-                    </span>
-                    <span className="font-mono text-muted-foreground">
-                      {videos.find(v => v.id === selectedVideo)?.date}
-                    </span>
-                    <span className="font-mono text-muted-foreground">
-                      {videos.find(v => v.id === selectedVideo)?.duration}
-                    </span>
-                  </div>
-                  
-                  <p className="font-mono text-sm text-muted-foreground">
-                    {videos.find(v => v.id === selectedVideo)?.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
+          {/* No modal needed; embedded inline like AllSongs */}
 
         </div>
       </div>

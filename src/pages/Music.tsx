@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { allSongs } from "@/data/songs";
 import Navigation from "@/components/Navigation";
 import HudOverlay from "@/components/HudOverlay";
 import FadeContent from "@/components/FadeContent";
@@ -57,53 +58,7 @@ const Music = () => {
   ];
 
   // Song list for external links (not part of the main player queue)
-  const songList = [
-    {
-      id: 6, 
-      title: "CINDERELLA",
-      artist: "Aryiion",
-      audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp?utm_source=generator",
-    },
-    {
-      id: 7,
-      title: "I WANT IT ALL",
-      artist: "Aryiion Ft. FADHIL",
-      audio: "",
-    },
-    {
-      id: 8,
-      title: "TEDUH",
-      artist: "Aryiion",
-      audio: "",
-    },
-    {
-      id: 9,
-      title: "BEHIND",
-      artist: "Aryiion Ft. Lil-Khai, Yung Uber",
-      audio: "https://open.spotify.com/embed/track/0XEFpf8JiQ0",
-    },
-    {
-      id: 10,
-      title: "PERCAYA",
-      artist: "Aryiion",
-      audio: "https://open.spotify.com/embed/track/5GsS2jzsPz7bHtP5iA5Lob",
-    },
-    // From Index.tsx
-    { id: 11, title: "BLUETOPIA ERA", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 12, title: "KENANGAN YANG HILANG", artist: "Aryiiom", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 13, title: "EGO", artist: "Aryiion, Yung Uber", audio: "" },
-    { id: 14, title: "KAU DAN BULAN", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/0PR7gLVNIwp1plbCFTffM0" },
-    { id: 15, title: "AKU BUKAN KAMU", artist: "Aryiion, Sobat Ray", audio: "" },
-    { id: 16, title: "PUTRI", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/753l5jZUQI4uW3EWaCbrLJ" },
-    { id: 17, title: "KU HANYA INGIN TAU", artist: "Aryiion, HEILNUAN", audio: "" },
-    { id: 18, title: "PENGEMBARA", artist: "Aryiion", audio: "" },
-    { id: 19, title: "LUPAKAN AKU", artist: "Aryiion", audio: "" },
-    { id: 20, title: "LEPASKAN", artist: "Aryiion, Yung Uber, Yonnyboii", audio: "https://open.spotify.com/embed/track/5GsS2jzsPz7bHtP5iA5Lob" },
-    { id: 21, title: "SEANDAINYA", artist: "Aryiion", audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 22, title: "TAK ADA YANG BERDUKA", artist: "Aryiion, Sobat Ray", audio: "" },
-    { id: 23, title: "JATUH CINTA PADAMU", artist: "Aryiion", audio: "" },
-    { id: 24, title: "DARI MIMPI", artist: "Aryiion", audio: "" },
-  ];
+  const songList = allSongs;
 
   // Audio Visualizer
   useEffect(() => {
@@ -157,11 +112,11 @@ const Music = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
       <HudOverlay />
       
-      <div className="pt-32 px-4 py-12">
+      <div className="pt-32 px-4 py-12 flex-1">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
@@ -315,64 +270,21 @@ const Music = () => {
               </div>
             </div>
           </FadeContent>
-          {/* Separate Track List card */}
-          <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0} delay={700}>
-            <div className="bg-card border border-primary/30 rounded-2xl p-8 mt-8">
-              <h3 className="font-display text-2xl font-bold uppercase tracking-wider text-center mb-6">
-                Track List
-              </h3>
-              <div className="max-w-2xl mx-auto space-y-3">
-                {[...songList]
-                  .sort((a, b) => a.id - b.id)
-                  .map((t) => {
-                    const hasSpotify = Boolean(t.audio && t.audio.includes('open.spotify.com'))
-                    const directUrl = hasSpotify ? t.audio.replace('/embed', '').split('?')[0] : ''
-                    if (hasSpotify) {
-                      return (
-                        <a
-                          key={`song-${t.id}`}
-                          href={directUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block bg-background/40 hover:bg-background/60 border border-primary/30 hover:border-primary/60 rounded-lg px-4 py-3 transition-all duration-300 group"
-                        >
-                          <div className="flex items-center justify-between gap-4">
-                            <span className="font-display text-sm md:text-base font-semibold tracking-wider group-hover:text-primary">
-                              {t.artist} - {t.title}
-                            </span>
-                            <span className="font-mono text-xs text-muted-foreground group-hover:text-primary">
-                              Open →
-                            </span>
-                          </div>
-                        </a>
-                      )
-                    }
-                    return (
-                      <div
-                        key={`song-${t.id}`}
-                        className="block bg-background/40 border border-primary/30 rounded-lg px-4 py-3 opacity-70 cursor-not-allowed"
-                        aria-disabled={true}
-                      >
-                        <div className="flex items-center justify-between gap-4">
-                          <span className="font-display text-sm md:text-base font-semibold tracking-wider">
-                            {t.artist} - {t.title}
-                          </span>
-                          <span className="font-mono text-xs text-muted-foreground">
-                            Coming soon
-                          </span>
-                        </div>
-                      </div>
-                    )
-                  })}
-              </div>
-            </div>
-          </FadeContent>  
+          <div className="text-center mt-4">
+            <Link
+              to="/all-songs"
+              className="font-mono text-xs md:text-sm tracking-widest uppercase text-primary hover:text-primary/80 underline underline-offset-4"
+            >
+              View all songs →
+            </Link>
+          </div>
+          {/* Removed extra Track List card as requested */}
         </div>
       </div>
 
       {/* Footer */}
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0} delay={800}>
-        <footer className="relative z-10 border-t border-border py-8 mt-16">
+      <footer className="relative z-10 border-t border-border py-8 mt-auto">
           <div className="container mx-auto px-4 text-center">
             <div className="font-mono text-xs text-muted-foreground">
               © 2025 ARYIION. ALL RIGHTS RESERVED.

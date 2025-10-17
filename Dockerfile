@@ -5,6 +5,9 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
+# Ensure production env for builds
+ENV NODE_ENV=production
+
 # Install dependencies first (better layer caching)
 COPY package*.json ./
 RUN npm ci
@@ -41,6 +44,12 @@ RUN printf '%s\n' \
 
 # Copy built assets from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Environment for runtime
+ENV NODE_ENV=production
+
+# Simple container healthcheck - verifies server responds on /
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD wget -q -O - http://127.0.0.1/ >/dev/null 2>&1 || exit 1
 
 EXPOSE 80
 
