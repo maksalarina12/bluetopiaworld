@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import HudOverlay from "@/components/HudOverlay";
 import CircularGallery from "@/components/CircularGallery";
+import foto1 from "@/assets/foto1.png";
+import foto2 from "@/assets/foto2.png";
+import foto3 from "@/assets/foto3.png";
+import foto4 from "@/assets/foto4.png";
+import foto5 from "@/assets/foto5.png";
+import foto6 from "@/assets/foto6.png";
+import foto7 from "@/assets/foto7.png";
+import bluetopiaImage from "@/assets/bluetopia.jpg";
+import aryiionLogo from "@/assets/aryiion-logo.png";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -10,63 +19,51 @@ const Gallery = () => {
   const images = [
     {
       id: 1,
-      src: "/src/assets/foto1.png",
-
+      src: foto1,
     },
     {
       id: 2,
-      src: "/src/assets/foto2.png",
-
+      src: foto2,
     },
     {
       id: 3,
-      src: "/src/assets/foto3.png",
-
+      src: foto3,
     },
     {
       id: 4,
-      src: "/src/assets/foto4.png",
-
+      src: foto4,
     },
     {
       id: 5,
-      src: "/src/assets/foto5.png",
-
+      src: foto5,
     },
     {
       id: 6,
-      src: "/src/assets/foto6.png",
-
+      src: foto6,
     },
     {
       id: 7,
-      src: "/src/assets/foto7.png",
-
+      src: foto7,
     },
     {
       id: 8,
-      src: "/src/assets/bluetopia.jpg",
-
+      src: bluetopiaImage,
     },
     {
       id: 9,
-      src: "/src/assets/aryiion-logo.png",
-
+      src: aryiionLogo,
     },
     {
       id: 10,
-      src: "/src/assets/aryiion-logo.png",
-
+      src: aryiionLogo,
     },
     {
       id: 11,
-      src: "/src/assets/aryiion-logo.png",
-
+      src: aryiionLogo,
     },
     {
       id: 12,
-      src: "/src/assets/aryiion-logo.png",
-
+      src: aryiionLogo,
     }
   ];
 
