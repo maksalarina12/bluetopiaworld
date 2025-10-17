@@ -53,8 +53,8 @@ const Shop = () => {
       name: "Anomaly T-Shirt Ver2",
       price: "$7,83",
       description: "Anomaly it's describe our life with galaxy vibes",
-      image: "/assets/anomalyblack2.jpg",
-      hoverImage: "/assets/anomalywhite2.jpg",
+      image: anomalyblack2,
+      hoverImage: anomalywhite2,
       shopeeUrl: "https://shopee.co.id/product/1146843343/25956401270/",
       status: "Pre-order"
     },
@@ -63,8 +63,8 @@ const Shop = () => {
       name: "Anomaly T-Shirt",
       price: "$7.83",
       description: "Anomaly it's describe our life with anomali faces",
-      image: "/assets/anomalyblack.jpg",
-      hoverImage: "/assets/anomalywhite.jpg",
+      image: anomalyblack,
+      hoverImage: anomalywhite,
       shopeeUrl: "https://shopee.co.id/product/1146843343/25855094589/",
       status: "Pre-order"
     },
@@ -73,8 +73,8 @@ const Shop = () => {
       name: "Bluetopia Lighter",
       price: "$7,82",
       description: "Big Lighter with skull",
-      image: "/assets/front.png",
-      hoverImage: "/assets/backligh.png",
+      image: front,
+      hoverImage: backligh,
       shopeeUrl: "https://shopee.co.id/aryiion-electronic-dreams-cd",
       status: "In Stock"
     },
@@ -83,8 +83,8 @@ const Shop = () => {
       name: "BLUETOPIA MINI LIGHTER",
       price: "$3.31",
       description: "Mini Lighter with skull",
-      image: "/assets/korekkanan.png",
-      hoverImage: "/assets/korekkiri.png",
+      image: korekkanan,
+      hoverImage: korekkiri,
       shopeeUrl: "https://shopee.co.id/aryiion-hoodie",
       status: "In Stock"
     },
@@ -93,8 +93,8 @@ const Shop = () => {
       name: "BLUETOPIA CAP",
       price: "$7.23",
       description: "Cap with Bluetopia logo snd skull",
-      image: "/assets/frontcap.png",
-      hoverImage: "/assets/backcap.png",
+      image: frontcap,
+      hoverImage: backcap,
       shopeeUrl: "https://shopee.co.id/aryiion-digital-bundle",
       status: "Digital"
     },
@@ -103,8 +103,8 @@ const Shop = () => {
       name: "BLUETOPIA NECKLACE",
       price: "$6.62",
       description: "Necklace with Bluetopia logo",
-      image: "/assets/front11.png",
-      hoverImage: "/assets/back11.png",
+      image: front11,
+      hoverImage: back11,
       shopeeUrl: "https://shopee.co.id/aryiion-poster-set",
       status: "In Stock"
     }

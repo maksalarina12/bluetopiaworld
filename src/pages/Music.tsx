@@ -171,7 +171,7 @@ const Music = () => {
                   <div className="relative mb-8">
                     <div className="relative w-64 h-64 mx-auto bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
                       <img 
-                        src="/assets/bluetopia.jpg" 
+                        src={bluetopiaImage} 
                         alt="Bluetopia Album"
                         className="w-full h-full object-cover"
                       />

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import HudOverlay from "@/components/HudOverlay";
+import ppspotify from "@/assets/ppspotify.jpeg";
 import BlurText from "@/components/BlurText";
 
 const Bio = () => {
@@ -73,7 +74,7 @@ const Bio = () => {
               <div className="bg-card border border-primary/30 rounded-2xl p-12 text-center">
                 <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full flex items-center justify-center mx-auto mb-8 overflow-hidden border-4 border-primary/30">
                   <img 
-                    src="/assets/ppspotify.jpeg" 
+                    src={ppspotify} 
                     alt="Aryiion Profile" 
                     className="w-full h-full object-cover rounded-full"
                   />
