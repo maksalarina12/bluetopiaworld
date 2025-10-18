@@ -17,18 +17,38 @@ const Videos = () => {
     try {
       // Handle youtu.be short links, watch?v=, and full URLs with params
       const u = new URL(url);
+      let videoId = '';
+      
       if (u.hostname.includes('youtu.be')) {
-        const id = u.pathname.replace('/', '');
-        return `https://www.youtube.com/embed/${id}`;
+        videoId = u.pathname.replace('/', '');
+      } else if (u.searchParams.get('v')) {
+        videoId = u.searchParams.get('v') as string;
+      } else if (u.pathname.startsWith('/embed/')) {
+        // Already an embed URL, return as is
+        return url;
+      } else {
+        // Fallback to original
+        return url;
       }
-      if (u.searchParams.get('v')) {
-        const id = u.searchParams.get('v') as string;
-        return `https://www.youtube.com/embed/${id}`;
-      }
-      // Already an embed or other format
-      if (u.pathname.startsWith('/embed/')) return url;
-      // Fallback to original
-      return url;
+      
+      // Create embed URL with parameters to allow playback without login
+      const embedParams = new URLSearchParams({
+        'autoplay': '0',
+        'mute': '0',
+        'controls': '1',
+        'showinfo': '0',
+        'rel': '0',
+        'modestbranding': '1',
+        'iv_load_policy': '3',
+        'fs': '1',
+        'cc_load_policy': '0',
+        'start': '0',
+        'end': '',
+        'vq': 'auto',
+        'origin': window.location.origin
+      });
+      
+      return `https://www.youtube.com/embed/${videoId}?${embedParams.toString()}`;
     } catch {
       return url;
     }
@@ -206,10 +226,11 @@ const Videos = () => {
                     src={getYouTubeEmbedUrl(video.youtubeUrl)}
                     title={`${video.title} - YouTube`}
                     frameBorder={0}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                    referrerPolicy="no-referrer-when-downgrade"
                     allowFullScreen
                     className="w-full h-full"
+                    sandbox="allow-scripts allow-same-origin allow-presentation allow-forms"
                   ></iframe>
                 </div>
 
