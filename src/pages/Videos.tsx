@@ -5,6 +5,10 @@ import HudOverlay from "@/components/HudOverlay";
 import kenanganhilangslow from "@/assets/kenanganhilangslow.jpg";
 import aryiionLogo from "@/assets/aryiion-logo.png";
 
+// Image functions
+const getKenanganhilangslow = () => kenanganhilangslow;
+const getAryiionLogo = () => aryiionLogo;
+
 const Videos = () => {
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -35,133 +39,133 @@ const Videos = () => {
     {
       id: 1,
       title: "Aryiion - CINDERELLA",
-      thumbnail: kenanganhilangslow,
+      thumbnail: getKenanganhilangslow(),
       youtubeUrl: "https://youtu.be/5IiAqc-RdUA", // Direct YouTube link - ganti dengan link YouTube Anda
     },
     {
       id: 2,
       title: "Aryiion - I WANT IT ALL Ft. FADHIL",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/4ZVOQNcFNzI", // Direct YouTube link - ganti dengan lin
     },
     {
       id: 3,
       title: "Aryiion - CINDERELLA",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/CZvI_0L7MmA", // Direct YouTube link - ganti dengan link YouT
     },
     {
       id: 4,
       title: "Aryiion - BEHIND Ft. Lil-Khai, Yung Uber",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/f0LBtzOVZWo", // Direct YouTube link - ganti dengan link YouTube Anda
     },
     {
       id: 5,
       title: "Aryiion - PERCAYA",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/IpSUPF_PDj4", // Direct YouTube link - ganti dengan link YouTub
     },
     {
       id: 6,
       title: "Aryiion - Kenangan Yang Hilang (Slowed Version)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/ez8v-GV-_g0", // Direct YouTube link - ganti dengan link YouTube Anda
     },
     {
       id: 7,
       title: "Aryiion - Kau Dan Bulan (Speed Up Ver)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/V4NP82WJDdE?si=5v1cmxyZMCDT5uQI", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 8,
       title: "Aryiion - Kenangan Yang Hilang (Music Video)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/xEtDFvRf-vQ?si=2WZY7ivNlUsODwzp", // Direct YouTube link - ganti dengan link YouTube Anda
     },
     {
       id: 9,
       title: "Aryiion - Ego Ft. Yung Uber (Official Lyrics Video)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/Fk8eAOfkaGg?si=G8rczdogb59jjqJi", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 10,
       title: "Aryiion - AKU BUKAN KAMU Ft. Sobat Ray",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/IRVuo5idp0U?si=ATBe2A1WFgHery8U", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 11,
       title: "Aryiion - Kau Dan Bulan (Official Music Video)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/yWM57Ky_3RQ?si=RSd-sEGzDMu7TDOw", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 12,
       title: "Aryiion - Seandainya (Official Lyric Video) (Prod By Giant Beat)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/0Ljf4b6FuSw?si=6GLgOlEEb1f-joid", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 13,
       title: "Aryiion - Jatuh cinta padamu (audio)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/b9dmTf507SU?si=umETy4bpNV-OC32s", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 14,
       title: "Aryiion - Dari mimpi (audio)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/y0gFGSyhrn0", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 15,
       title: "HEILNUAN - Ku hanya ingin tau Ft. Aryiion (Official Lyric Video)(Prod RX808)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/CQvSdD1BJ1I", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 16,
       title: "Aryiion - Putri Ft. pink (Official Lyric Video)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/3pY1GVy6OGU", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 17,
       title: "Aryiion - Pengembara [Official Music Video]",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/Qv3-Xj2HB4o", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 18,
       title: "Aryiion - Lupakan Aku {Official Lyrics Video}(PROD BEATS BY CON)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/0XEFpf8JiQ0", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 19,
       title: "Aryiion - lepaskan Ft Yung Uber (official lyric video)(PROD BEATS BY CON)",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/bbWTk4Z54h0", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },
     {
       id: 20,
       title: "Sobat Ray - Tak Ada Yang Berduka ft. Aryiion ( PROD BY BOYFIFTY )",
-      thumbnail: aryiionLogo,
+      thumbnail: getAryiionLogo(),
       youtubeUrl: "https://youtu.be/MT6r1HWIAbE", // Direct YouTube link - ganti dengan link YouTube Anda
 
     },

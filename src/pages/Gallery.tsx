@@ -13,57 +13,68 @@ import foto7 from "@/assets/foto7.png";
 import bluetopiaImage from "@/assets/bluetopia.jpg";
 import aryiionLogo from "@/assets/aryiion-logo.png";
 
+// Image functions
+const getFoto1 = () => foto1;
+const getFoto2 = () => foto2;
+const getFoto3 = () => foto3;
+const getFoto4 = () => foto4;
+const getFoto5 = () => foto5;
+const getFoto6 = () => foto6;
+const getFoto7 = () => foto7;
+const getBluetopiaImage = () => bluetopiaImage;
+const getAryiionLogo = () => aryiionLogo;
+
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const images = [
     {
       id: 1,
-      src: foto1,
+      src: getFoto1(),
     },
     {
       id: 2,
-      src: foto2,
+      src: getFoto2(),
     },
     {
       id: 3,
-      src: foto3,
+      src: getFoto3(),
     },
     {
       id: 4,
-      src: foto4,
+      src: getFoto4(),
     },
     {
       id: 5,
-      src: foto5,
+      src: getFoto5(),
     },
     {
       id: 6,
-      src: foto6,
+      src: getFoto6(),
     },
     {
       id: 7,
-      src: foto7,
+      src: getFoto7(),
     },
     {
       id: 8,
-      src: bluetopiaImage,
+      src: getBluetopiaImage(),
     },
     {
       id: 9,
-      src: aryiionLogo,
+      src: getAryiionLogo(),
     },
     {
       id: 10,
-      src: aryiionLogo,
+      src: getAryiionLogo(),
     },
     {
       id: 11,
-      src: aryiionLogo,
+      src: getAryiionLogo(),
     },
     {
       id: 12,
-      src: aryiionLogo,
+      src: getAryiionLogo(),
     }
   ];
 

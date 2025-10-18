@@ -9,6 +9,10 @@ import TiltedCard from "@/components/TiltedCard";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/aryiion-logo.png";
 
+// Image functions
+const getHeroBg = () => heroBg;
+const getLogo = () => logo;
+
 const Index = () => {
   const [showTrackList, setShowTrackList] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
@@ -57,7 +61,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
-            backgroundImage: `url(${heroBg})`,
+            backgroundImage: `url(${getHeroBg()})`,
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background"></div>
@@ -73,7 +77,7 @@ const Index = () => {
             {/* Logo with TiltedCard effect */}
             <Link to="/explore" className="inline-block group">
               <TiltedCard
-                imageSrc={logo}
+                imageSrc={getLogo()}
                 altText="Aryiion Logo"
                 captionText="Explore Aryiion's World"
                 containerHeight="500px"

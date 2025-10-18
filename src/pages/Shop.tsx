@@ -18,6 +18,21 @@ import backcap from "@/assets/backcap.png";
 import front11 from "@/assets/front11.png";
 import back11 from "@/assets/back11.png";
 
+// Image functions
+const getAryiionLogo = () => aryiionLogo;
+const getAnomalyblack2 = () => anomalyblack2;
+const getAnomalywhite2 = () => anomalywhite2;
+const getAnomalyblack = () => anomalyblack;
+const getAnomalywhite = () => anomalywhite;
+const getFront = () => front;
+const getBackligh = () => backligh;
+const getKorekkanan = () => korekkanan;
+const getKorekkiri = () => korekkiri;
+const getFrontcap = () => frontcap;
+const getBackcap = () => backcap;
+const getFront11 = () => front11;
+const getBack11 = () => back11;
+
 // Hover Image Component
 const HoverImage = ({ src, hoverSrc, alt, className }: { src: string; hoverSrc: string; alt: string; className: string }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -53,8 +68,8 @@ const Shop = () => {
       name: "Anomaly T-Shirt Ver2",
       price: "$7,83",
       description: "Anomaly it's describe our life with galaxy vibes",
-      image: anomalyblack2,
-      hoverImage: anomalywhite2,
+      image: getAnomalyblack2(),
+      hoverImage: getAnomalywhite2(),
       shopeeUrl: "https://shopee.co.id/product/1146843343/25956401270/",
       status: "Pre-order"
     },
@@ -63,8 +78,8 @@ const Shop = () => {
       name: "Anomaly T-Shirt",
       price: "$7.83",
       description: "Anomaly it's describe our life with anomali faces",
-      image: anomalyblack,
-      hoverImage: anomalywhite,
+      image: getAnomalyblack(),
+      hoverImage: getAnomalywhite(),
       shopeeUrl: "https://shopee.co.id/product/1146843343/25855094589/",
       status: "Pre-order"
     },
@@ -73,8 +88,8 @@ const Shop = () => {
       name: "Bluetopia Lighter",
       price: "$7,82",
       description: "Big Lighter with skull",
-      image: front,
-      hoverImage: backligh,
+      image: getFront(),
+      hoverImage: getBackligh(),
       shopeeUrl: "https://shopee.co.id/aryiion-electronic-dreams-cd",
       status: "In Stock"
     },
@@ -83,8 +98,8 @@ const Shop = () => {
       name: "BLUETOPIA MINI LIGHTER",
       price: "$3.31",
       description: "Mini Lighter with skull",
-      image: korekkanan,
-      hoverImage: korekkiri,
+      image: getKorekkanan(),
+      hoverImage: getKorekkiri(),
       shopeeUrl: "https://shopee.co.id/aryiion-hoodie",
       status: "In Stock"
     },
@@ -93,8 +108,8 @@ const Shop = () => {
       name: "BLUETOPIA CAP",
       price: "$7.23",
       description: "Cap with Bluetopia logo snd skull",
-      image: frontcap,
-      hoverImage: backcap,
+      image: getFrontcap(),
+      hoverImage: getBackcap(),
       shopeeUrl: "https://shopee.co.id/aryiion-digital-bundle",
       status: "Digital"
     },
@@ -103,8 +118,8 @@ const Shop = () => {
       name: "BLUETOPIA NECKLACE",
       price: "$6.62",
       description: "Necklace with Bluetopia logo",
-      image: front11,
-      hoverImage: back11,
+      image: getFront11(),
+      hoverImage: getBack11(),
       shopeeUrl: "https://shopee.co.id/aryiion-poster-set",
       status: "In Stock"
     }

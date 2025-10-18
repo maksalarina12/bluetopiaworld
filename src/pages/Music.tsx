@@ -8,6 +8,10 @@ import Noise from "@/components/Noise";
 import aryiionLogo from "@/assets/aryiion-logo.png";
 import bluetopiaImage from "@/assets/bluetopia.jpg";
 
+// Image functions
+const getAryiionLogo = () => aryiionLogo;
+const getBluetopiaImage = () => bluetopiaImage;
+
 const Music = () => {
   const [currentTrack, setCurrentTrack] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,7 +26,7 @@ const Music = () => {
       title: "CINDERELLA",
       artist: "Aryiion",
       duration: "3:45",
-      cover: aryiionLogo,
+      cover: getAryiionLogo(),
       audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp?utm_source=generator"
     },
     {
@@ -30,7 +34,7 @@ const Music = () => {
       title: "I WANT IT ALL",
       artist: "Aryiion Ft. FADHIL",
       duration: "4:12",
-      cover: aryiionLogo,
+      cover: getAryiionLogo(),
       audio: ""
     },
     {
@@ -38,7 +42,7 @@ const Music = () => {
       title: "TEDUH",
       artist: "Aryiion",
       duration: "3:28",
-      cover: aryiionLogo,
+      cover: getAryiionLogo(),
       audio: ""
     },
     {
@@ -46,7 +50,7 @@ const Music = () => {
       title: "BEHIND",
       artist: "Aryiion Ft. Lil-Khai, Yung Uber",
       duration: "4:05",
-      cover: aryiionLogo,
+      cover: getAryiionLogo(),
       audio: "https://open.spotify.com/embed/track/0XEFpf8JiQ0"
     },
     {
@@ -54,7 +58,7 @@ const Music = () => {
       title: "PERCAYA",
       artist: "Aryiion",
       duration: "3:52",
-      cover: aryiionLogo,
+      cover: getAryiionLogo(),
       audio: "https://open.spotify.com/embed/track/5GsS2jzsPz7bHtP5iA5Lob"
     },
   ];
@@ -137,7 +141,7 @@ const Music = () => {
             <div className="mb-16">
               <div className="relative rounded-2xl border border-primary/30 overflow-hidden">
                 <img 
-                  src={bluetopiaImage} 
+                  src={getBluetopiaImage()} 
                   alt="Bluetopia" 
                   className="w-full h-96 object-cover"
                 />
@@ -171,7 +175,7 @@ const Music = () => {
                   <div className="relative mb-8">
                     <div className="relative w-64 h-64 mx-auto bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
                       <img 
-                        src={bluetopiaImage} 
+                        src={getBluetopiaImage()} 
                         alt="Bluetopia Album"
                         className="w-full h-full object-cover"
                       />
