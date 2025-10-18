@@ -44,6 +44,8 @@ const Index = () => {
 
   const handleBackToTop = () => {
     setIsFadingOut(true);
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => {
       setShowTrackList(false);
       setIsFadingOut(false);
@@ -126,19 +128,25 @@ const Index = () => {
               : 'opacity-100 transform translate-y-0 animate-fade-in'
           }`}
         >
-          <TrackList onBackToTop={handleBackToTop} />
+          {/* Background blur effect */}
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm -z-10"></div>
+          
+          {/* Track List Content with blur effect */}
+          <div className="relative z-10 backdrop-blur-sm">
+            <TrackList onBackToTop={handleBackToTop} />
+          </div>
         </section>
       )}
 
       {/* Latest Song Preview Section */}
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0} delay={200}>
-        <section className="relative z-10 container mx-auto px-4 py-16">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="font-display text-3xl md:text-4xl font-bold uppercase tracking-wider text-foreground mb-4">
+        <section className="relative z-10 container mx-auto px-4 py-20">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-wider text-foreground mb-6">
                 LATEST RELEASE
               </h2>
-              <p className="font-mono text-sm tracking-widest text-primary uppercase">
+              <p className="font-mono text-base tracking-widest text-primary uppercase">
                 Preview the newest track
               </p>
             </div>
@@ -183,10 +191,10 @@ const Index = () => {
 
       {/* Journey Section */}
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0} delay={400}>
-        <section className="relative z-10 container mx-auto px-4 py-16">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="mb-4" style={{position: 'relative', height: '150px'}}>
+        <section className="relative z-10 container mx-auto px-4 py-20">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-20">
+              <div className="mb-6" style={{position: 'relative', height: '180px'}}>
                 <TextPressure
                   text="THE JOURNEY"
                   flex={true}
@@ -197,10 +205,10 @@ const Index = () => {
                   italic={true}
                   textColor="#ffffff"
                   strokeColor="#22c55e"
-                  minFontSize={60}
+                  minFontSize={70}
                 />
               </div>
-              <p className="font-mono text-sm tracking-widest text-primary uppercase">
+              <p className="font-mono text-base tracking-widest text-primary uppercase">
                 Song Year To Years
               </p>
             </div>
