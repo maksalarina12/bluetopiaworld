@@ -27,7 +27,7 @@ const Music = () => {
       artist: "Aryiion",
       duration: "3:45",
       cover: getAryiionLogo(),
-      audio: "https://open.spotify.com/embed/track/6SZ0nVZU0ZOuayrz2tqBIp?utm_source=generator"
+      audio: "https://open.spotify.com/embed/track/4vJ9KIddqbKmWzdsHtWjux?utm_source=generator"
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ const Music = () => {
       artist: "Aryiion Ft. FADHIL",
       duration: "4:12",
       cover: getAryiionLogo(),
-      audio: ""
+      audio: "https://open.spotify.com/embed/track/2SVfgASZ3cXxlzLoIOHbGb?utm_source=generator"
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ const Music = () => {
       artist: "Aryiion",
       duration: "3:28",
       cover: getAryiionLogo(),
-      audio: ""
+      audio: "https://open.spotify.com/embed/track/3Elry9AmmaBkLdWc4KPrri?utm_source=generator"
     },
     {
       id: 4,
@@ -51,7 +51,7 @@ const Music = () => {
       artist: "Aryiion Ft. Lil-Khai, Yung Uber",
       duration: "4:05",
       cover: getAryiionLogo(),
-      audio: "https://open.spotify.com/embed/track/0XEFpf8JiQ0"
+      audio: "https://open.spotify.com/embed/track/3SS4TDyOSjDRxwhLjKFgtY?utm_source=generator"
     },
     {
       id: 5,
@@ -59,7 +59,7 @@ const Music = () => {
       artist: "Aryiion",
       duration: "3:52",
       cover: getAryiionLogo(),
-      audio: "https://open.spotify.com/embed/track/5GsS2jzsPz7bHtP5iA5Lob"
+      audio: "https://open.spotify.com/embed/track/0ahy2PU4BguC2VJr9JqoTo?utm_source=generator"
     },
   ];
 
@@ -202,7 +202,7 @@ const Music = () => {
                   
                   {/* Spotify Link */}
                   <a 
-                    href="https://open.spotify.com/artist/your-artist-id" 
+                    href="https://open.spotify.com/album/0ZNnymcJRmUMrU4YJZoYyl" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-block bg-primary text-background px-6 py-3 rounded-lg font-mono text-sm uppercase tracking-wider hover:bg-primary/90 transition-all duration-300 hover:scale-105"

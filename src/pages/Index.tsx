@@ -6,7 +6,6 @@ import TrackList from "@/components/TrackList";
 import FadeContent from "@/components/FadeContent";
 import TextPressure from "@/components/TextPressure";
 import TiltedCard from "@/components/TiltedCard";
-import CountdownWidget from "@/components/CountdownWidget";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/aryiion-logo.png";
 import bluetopia from "@/assets/bluetopia.jpg";
@@ -147,44 +146,40 @@ const Index = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-wider text-foreground mb-6">
-                PreReleased Album
+                LATEST ALBUM
               </h2>
               
-              {/* Countdown Widget */}
-              <CountdownWidget />
-            </div>
-            
-            {/* Album Cover and Save Button */}
-            <div className="flex flex-col items-center gap-8">
-              {/* Bluetopia Album Cover */}
-              <div className="w-80 h-80 rounded-xl border-4 border-primary/50 hover:border-primary transition-all duration-500 hover:shadow-[0_0_40px_rgba(34,197,94,0.5)] group relative overflow-hidden">
-                <img 
-                  src={getBluetopia()} 
-                  alt="Bluetopia Album Cover"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <p className="font-mono text-sm text-white font-bold uppercase tracking-wider">
-                    Bluetopia Album
-                  </p>
-                </div>
+              {/* Embedded Album Player */}
+              <div className="mb-8">
+                <iframe 
+                  src="https://open.spotify.com/embed/album/0ZNnymcJRmUMrU4YJZoYyl?utm_source=generator&theme=0" 
+                  width="100%" 
+                  height="352" 
+                  frameBorder="0" 
+                  allowFullScreen 
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                  loading="lazy"
+                  className="rounded-xl shadow-2xl"
+                ></iframe>
               </div>
-
-              {/* Save to Spotify Button */}
-              <button
-                onClick={() => window.open('spotify:album:0ZNnymcJRmUMrU4YJZoYyl', '_blank')}
-                className="bg-primary hover:bg-primary/90 text-background font-mono text-lg font-bold uppercase tracking-wider px-12 py-6 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.6)] group/btn relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                <span className="relative z-10 flex items-center gap-3">
+              
+              {/* Direct Link */}
+              <div className="mb-8">
+                <a 
+                  href="https://open.spotify.com/album/0ZNnymcJRmUMrU4YJZoYyl" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 text-background font-mono text-lg font-bold uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.6)] group/btn relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                   </svg>
-                  SAVE TO YOUR SPOTIFY
-                </span>
-              </button>
+                  <span className="relative z-10">LISTEN ON SPOTIFY</span>
+                </a>
+              </div>
             </div>
+            
           </div>
         </section>
       </FadeContent>
