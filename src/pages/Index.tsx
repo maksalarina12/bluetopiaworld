@@ -6,6 +6,7 @@ import TrackList from "@/components/TrackList";
 import FadeContent from "@/components/FadeContent";
 import TextPressure from "@/components/TextPressure";
 import TiltedCard from "@/components/TiltedCard";
+import { useIsMobile } from "@/hooks/use-mobile";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/aryiion-logo.png";
 import bluetopia from "@/assets/bluetopia.jpg";
@@ -18,9 +19,10 @@ const getBluetopia = () => bluetopia;
 const Index = () => {
   const [showTrackList, setShowTrackList] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const isMobile = useIsMobile();
 
   const journeyEras = [
-    { id: 1, title: "BLUETOPIA ERA", description: "The beginning of a new chapter", year: "2025", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 1, title: "BLUETOPIA ERA", description: "The beginning of a new chapter", year: "2025", spotifyUrl: "https://open.spotify.com/album/0ZNnymcJRmUMrU4YJZoYyl?si=I7PcZdSkQxapzoIWZQtbUg" },
     { id: 2, title: "KENANGAN YANG HILANG", description: "Aryiiom", year: "2023", spotifyUrl: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp?si=53629e57ea234389" },
     { id: 4, title: "EGO", description: "Aryiion, Yung Uber", year: "2022", spotifyUrl: "https://openyoutu.be/Fk8eAOfkaGg?si=NRIgsqNA1wJz8G-h" },
     { id: 3, title: "KAU DAN BULAN", description: "Aryiion", year: "2021", spotifyUrl: "https://open.spotify.com/track/0PR7gLVNIwp1plbCFTffM0?si=f9abe2c3d2134aae" },
@@ -84,10 +86,10 @@ const Index = () => {
                 imageSrc={getLogo()}
                 altText="Aryiion Logo"
                 captionText="Explore Aryiion's World"
-                containerHeight="500px"
-                containerWidth="500px"
-                imageHeight="500px"
-                imageWidth="500px"
+                containerHeight={isMobile ? "260px" : "500px"}
+                containerWidth={isMobile ? "260px" : "500px"}
+                imageHeight={isMobile ? "260px" : "500px"}
+                imageWidth={isMobile ? "260px" : "500px"}
                 rotateAmplitude={12}
                 scaleOnHover={1.1}
                 showMobileWarning={false}
@@ -145,7 +147,7 @@ const Index = () => {
         <section className="relative z-10 container mx-auto px-4 py-20">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-wider text-foreground mb-6">
+              <h2 className="font-display text-3xl md:text-5xl font-bold uppercase tracking-wider text-foreground mb-6">
                 LATEST ALBUM
               </h2>
               
@@ -154,7 +156,7 @@ const Index = () => {
                 <iframe 
                   src="https://open.spotify.com/embed/album/0ZNnymcJRmUMrU4YJZoYyl?utm_source=generator&theme=0" 
                   width="100%" 
-                  height="352" 
+                  height={isMobile ? 300 : 352}
                   frameBorder="0" 
                   allowFullScreen 
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
@@ -189,7 +191,7 @@ const Index = () => {
         <section className="relative z-10 container mx-auto px-4 py-20">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-20">
-              <div className="mb-6" style={{position: 'relative', height: '180px'}}>
+              <div className="mb-6" style={{position: 'relative', height: isMobile ? '120px' : '180px'}}>
                 <TextPressure
                   text="THE JOURNEY"
                   flex={true}
@@ -200,7 +202,7 @@ const Index = () => {
                   italic={true}
                   textColor="#ffffff"
                   strokeColor="#22c55e"
-                  minFontSize={70}
+                  minFontSize={isMobile ? 36 : 70}
                 />
               </div>
               <p className="font-mono text-base tracking-widest text-primary uppercase">
@@ -210,21 +212,21 @@ const Index = () => {
 
             {/* Timeline */}
             <div className="relative">
-              {/* Central timeline line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary opacity-30"></div>
+              {/* Central timeline line (hide on mobile) */}
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary opacity-30"></div>
               
               {/* Timeline items */}
               <div className="space-y-12">
                 {journeyEras.map((era, index) => (
                   <div
                     key={era.id}
-                    className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                    className={`relative flex items-start md:items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col`}
                   >
                     {/* Timeline dot */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-primary rounded-full border-2 border-background z-10 animate-pulse-glow"></div>
+                    <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-primary rounded-full border-2 border-background z-10 animate-pulse-glow"></div>
                     
                     {/* Content card */}
-                    <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                    <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
                       <div className="bg-card border border-border rounded-lg p-6 hover:border-primary transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] group relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div className="relative z-10">
@@ -236,7 +238,7 @@ const Index = () => {
                             href={era.spotifyUrl} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="font-display text-xl font-bold uppercase tracking-wider text-foreground group-hover:text-primary transition-all duration-300 mb-2 block hover:text-primary cursor-pointer hover:scale-105 transform"
+                            className="font-display text-lg md:text-xl font-bold uppercase tracking-wider text-foreground group-hover:text-primary transition-all duration-300 mb-2 block hover:text-primary cursor-pointer hover:scale-105 transform"
                           >
                             {era.title}
                           </a>

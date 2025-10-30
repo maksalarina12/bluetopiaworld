@@ -12,6 +12,7 @@ import foto6 from "@/assets/foto6.png";
 import foto7 from "@/assets/foto7.png";
 import bluetopiaImage from "@/assets/bluetopia.jpg";
 import aryiionLogo from "@/assets/aryiion-logo.png";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Image functions
 const getFoto1 = () => foto1;
@@ -26,6 +27,7 @@ const getAryiionLogo = () => aryiionLogo;
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const isMobile = useIsMobile();
 
   const images = [
     {
@@ -98,7 +100,7 @@ const Gallery = () => {
 
 
           {/* Circular Gallery */}
-          <div style={{ height: '900px', position: 'relative' }}>
+          <div style={{ height: isMobile ? '560px' : '900px', position: 'relative' }}>
             <CircularGallery 
               bend={3} 
               textColor="#ffffff" 
@@ -166,7 +168,7 @@ const Gallery = () => {
       </div>
 
       {/* Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 z-10 border-t border-border py-4 bg-background">
+      <footer className="relative z-10 border-t border-border py-6 mt-auto bg-background">
         <div className="container mx-auto px-4 text-center">
           <div className="font-mono text-xs text-muted-foreground">
             © 2025 ARYIION. ALL RIGHTS RESERVED.

@@ -7,6 +7,7 @@ import FadeContent from "@/components/FadeContent";
 import Noise from "@/components/Noise";
 import aryiionLogo from "@/assets/aryiion-logo.png";
 import bluetopiaImage from "@/assets/bluetopia.jpg";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Image functions
 const getAryiionLogo = () => aryiionLogo;
@@ -19,6 +20,7 @@ const Music = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
+  const isMobile = useIsMobile();
 
   const tracks = [
     {
@@ -143,7 +145,7 @@ const Music = () => {
                 <img 
                   src={getBluetopiaImage()} 
                   alt="Bluetopia" 
-                  className="w-full h-96 object-cover"
+                  className="w-full h-64 md:h-96 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent pointer-events-none"></div>
                 {/* Noise Effect on border */}
@@ -173,7 +175,7 @@ const Music = () => {
               <div className="lg:col-span-1">
                 <div className="bg-card border border-primary/30 rounded-2xl p-8 text-center group hover:border-primary transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)]">
                   <div className="relative mb-8">
-                    <div className="relative w-64 h-64 mx-auto bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-40 h-40 md:w-64 md:h-64 mx-auto bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
                       <img 
                         src={getBluetopiaImage()} 
                         alt="Bluetopia Album"
@@ -202,7 +204,7 @@ const Music = () => {
                   
                   {/* Spotify Link */}
                   <a 
-                    href="https://open.spotify.com/album/0ZNnymcJRmUMrU4YJZoYyl" 
+                    href="https://open.spotify.com/album/0ZNnymcJRmUMrU4YJZoYyl?si=I7PcZdSkQxapzoIWZQtbUg" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-block bg-primary text-background px-6 py-3 rounded-lg font-mono text-sm uppercase tracking-wider hover:bg-primary/90 transition-all duration-300 hover:scale-105"
@@ -259,7 +261,7 @@ const Music = () => {
 
           {/* Spotify Integration */}
           <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0} delay={600}>
-            <div className="bg-card border border-primary/30 rounded-2xl p-8">
+            <div className="bg-card border border-primary/30 rounded-2xl p-6 md:p-8">
               <h3 className="font-display text-2xl font-bold uppercase tracking-wider text-center mb-6">
                 Stream on Spotify
               </h3>
@@ -267,7 +269,7 @@ const Music = () => {
                 <iframe 
                   src={tracks[currentTrack].audio}
                   width="100%" 
-                  height="152" 
+                  height={isMobile ? 120 : 152}
                   frameBorder="0" 
                   allowTransparency={true} 
                   allow="encrypted-media"

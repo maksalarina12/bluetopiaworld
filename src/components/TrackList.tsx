@@ -15,11 +15,11 @@ interface TrackListProps {
 
 const TrackList: React.FC<TrackListProps> = ({ onBackToTop }) => {
   const tracks: Track[] = [
-    { id: 1, title: "CINDERELLA", artist: "Aryiion", url: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 3, title: "TEDUH", artist: "Aryiion", url: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 2, title: "I WANT IT ALL", artist: "Aryiion", features: "FADHIL", url: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 4, title: "BEHIND", artist: "Aryiion", features: "Lil-Khai, Yung Uber", url: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
-    { id: 5, title: "PERCAYA", artist: "Aryiion", url: "https://open.spotify.com/track/6SZ0nVZU0ZOuayrz2tqBIp" },
+    { id: 1, title: "CINDERELLA", artist: "Aryiion", url: "https://open.spotify.com/track/4vJ9KIddqbKmWzdsHtWjux?si=9064a6649db44cc3" },
+    { id: 3, title: "TEDUH", artist: "Aryiion", url: "https://open.spotify.com/track/3Elry9AmmaBkLdWc4KPrri?si=6f38442f1b3f4031" },
+    { id: 2, title: "I WANT IT ALL", artist: "Aryiion", features: "FADHIL", url: "https://open.spotify.com/track/2SVfgASZ3cXxlzLoIOHbGb?si=32cdf0ac44fe461d" },
+    { id: 4, title: "BEHIND", artist: "Aryiion", features: "Lil-Khai, Yung Uber", url: "https://open.spotify.com/track/3SS4TDyOSjDRxwhLjKFgtY?si=67f10753506d433a" },
+    { id: 5, title: "PERCAYA", artist: "Aryiion", url: "https://open.spotify.com/track/0ahy2PU4BguC2VJr9JqoTo?si=a6955d3753574d02" },
   ];
 
   return (

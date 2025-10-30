@@ -4,12 +4,14 @@ import Navigation from "@/components/Navigation";
 import HudOverlay from "@/components/HudOverlay";
 import kenanganhilangslow from "@/assets/kenanganhilangslow.jpg";
 import aryiionLogo from "@/assets/aryiion-logo.png";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Image functions
 const getKenanganhilangslow = () => kenanganhilangslow;
 const getAryiionLogo = () => aryiionLogo;
 
 const Videos = () => {
+  const isMobile = useIsMobile();
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -197,25 +199,25 @@ const Videos = () => {
       <Navigation />
       <HudOverlay />
       
-      <div className="pt-32 px-4 py-12">
+      <div className="pt-28 md:pt-32 px-4 py-10 md:py-12">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 animate-fade-in">
-            <div className="font-mono text-sm tracking-widest text-primary uppercase mb-4 animate-pulse-glow">
+          <div className="text-center mb-12 md:mb-16 animate-fade-in">
+            <div className="font-mono text-xs md:text-sm tracking-widest text-primary uppercase mb-3 md:mb-4 animate-pulse-glow">
               Visual Experience
             </div>
-            <h1 className="font-display text-6xl md:text-8xl font-bold uppercase tracking-wider mb-4">
+            <h1 className="font-display text-4xl md:text-8xl font-bold uppercase tracking-wider mb-4">
               Videos
             </h1>
           </div>
 
 
           {/* Video Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-10 mb-12 md:mb-16">
             {videos.map((video, index) => (
               <div
                 key={video.id}
-                className="group bg-card border-2 border-primary/40 rounded-2xl overflow-hidden hover:border-primary transition-all duration-500 hover:shadow-[0_0_40px_rgba(34,197,94,0.35)] hover:scale-[1.02] transform relative"
+                className="group bg-card border-2 border-primary/40 rounded-2xl overflow-hidden hover:border-primary transition-all duration-500 hover:shadow-[0_0_40px_rgba(34,197,94,0.35)] hover:scale-[1.01] md:hover:scale-[1.02] transform relative"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Inline YouTube Embed (like AllSongs) */}
@@ -235,8 +237,8 @@ const Videos = () => {
                 </div>
 
                 {/* Video Info */}
-                <div className="p-6">
-                  <h3 className="font-display text-lg font-bold uppercase tracking-wider mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                <div className="p-5 md:p-6">
+                  <h3 className="font-display text-base md:text-lg font-bold uppercase tracking-wider mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     {video.title}
                   </h3>
                   
@@ -248,7 +250,7 @@ const Videos = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary text-primary hover:text-primary px-4 py-2 rounded-lg font-mono text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105"
+                    className="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary text-primary hover:text-primary px-3 md:px-4 py-2 rounded-lg font-mono text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105"
                   >
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -267,7 +269,7 @@ const Videos = () => {
       </div>
 
       {/* Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 z-10 border-t border-border py-4 bg-background">
+      <footer className="relative z-10 border-t border-border py-6 mt-auto bg-background">
         <div className="container mx-auto px-4 text-center">
           <div className="font-mono text-xs text-muted-foreground">
             © 2025 ARYIION. ALL RIGHTS RESERVED.
